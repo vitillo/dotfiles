@@ -1,2 +1,3 @@
 dotfiles
 ========
+Unix configuration files.
