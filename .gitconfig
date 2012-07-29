@@ -1,0 +1,7 @@
+[user]
+	name = Roberto Agostino Vitillo
+	email = ra.vitillo@gmail.com
+
+[core]
+	excludesfiles = ~/.gitignore
+	autocrlf = input
