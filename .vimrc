@@ -75,7 +75,7 @@ autocmd vimenter * NERDTree
 
 " C, C++ 
 " ------
-au filetype c,cpp setlocal cindent shiftwidth=2 | imap <Tab> <Esc>cc
+au filetype c,cpp setlocal cindent shiftwidth=2 | imap <buffer> <Tab> <Esc>cc
 
 " Python
 " ------
