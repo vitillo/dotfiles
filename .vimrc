@@ -52,8 +52,8 @@ nnoremap <leader>b :TagbarToggl<CR>
 nnoremap <leader>s :ConqueTerm bash<CR>
 nnoremap <leader>m :make<CR>
 map <leader>d <plug>NERDCommenterToggle
-map <F2> :mksession! ~/vim_session <cr>
-map <F3> :source ~/vim_session <cr>
+map <F2> :SaveSession<CR>
+map <F3> :OpenSession<CR> 
 
 au BufEnter * :syntax sync fromstart
 call pathogen#infect() 
@@ -72,6 +72,10 @@ let g:tagbar_autoshowtag = 1
 " NERDTree configuration
 let NERDTreeChDirMode=2
 autocmd vimenter * NERDTree
+autocmd vimenter * wincmd l
+
+" Session configuration
+let g:session_autosave = 'no'
 
 " C, C++ 
 " ------
