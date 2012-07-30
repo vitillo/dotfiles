@@ -18,4 +18,4 @@
 	url = https://github.com/xolox/vim-session
 [submodule ".vim/bundle/clang_complete"]
 	path = .vim/bundle/clang_complete
-	url = https://github.com/Rip-Rip/clang-complete
+	url = https://github.com/Rip-Rip/clang_complete.git
