@@ -52,6 +52,7 @@ nnoremap <leader>o :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggl<CR> 
 nnoremap <leader>s :ConqueTerm bash<CR>
 nnoremap <leader>m :make<CR>
+nnoremap <leader>e :BufExplorer<CR>
 map <leader>d <plug>NERDCommenterToggle
 map <F2> :SaveSession<CR>
 map <F3> :OpenSession<CR> 
