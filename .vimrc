@@ -6,7 +6,7 @@ filetype plugin on
 set backspace=indent,eol,start
 set hidden
 set title
-set smartindent
+
 set gdefault
 set autochdir
 set autoread
@@ -38,6 +38,7 @@ nnoremap Y y$
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
+nnoremap s S
 inoremap jj <ESC>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -77,9 +78,12 @@ autocmd vimenter * wincmd l
 " Session configuration
 let g:session_autosave = 'no'
 
+" Supertab configuration
+let g:SuperTabClosePreviewOnPopupClose = 1
+
 " C, C++ 
 " ------
-au filetype c,cpp setlocal cindent shiftwidth=2 | imap <buffer> <Tab> <Esc>cc
+au filetype c,cpp setlocal cindent shiftwidth=2 " | imap <buffer> <Tab> <Esc>cc
 
 " Python
 " ------
