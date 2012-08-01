@@ -30,4 +30,4 @@
 	url = https://github.com/corntrace/bufexplorer.git
 [submodule ".vim/bundle/colorschemes"]
 	path = .vim/bundle/colorschemes
-	url = git@github.com:flazz/vim-colorschemes.git
+	url = https://github.com/flazz/vim-colorschemes.git
