@@ -6,6 +6,9 @@ filetype plugin on
 set backspace=indent,eol,start
 set hidden
 set title
+set mouse=a
+set virtualedit=onemore
+set history=1000
 
 set gdefault
 set autochdir
@@ -58,7 +61,9 @@ map <F2> :SaveSession<CR>
 map <F3> :OpenSession<CR> 
 
 au BufEnter * :syntax sync fromstart
-call pathogen#infect() 
+call pathogen#infect()
+
+colorscheme wombat
 
 " ConqueTerm configuration
 let g:ConqueTerm_SessionSupport = 1
@@ -73,8 +78,8 @@ let g:tagbar_autoshowtag = 1
 
 " NERDTree configuration
 let NERDTreeChDirMode=2
-autocmd vimenter * NERDTree
-autocmd vimenter * wincmd l
+"autocmd vimenter * NERDTree
+"autocmd vimenter * wincmd l
 
 " Session configuration
 let g:session_autosave = 'no'
