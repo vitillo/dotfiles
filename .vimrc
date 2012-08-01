@@ -22,7 +22,6 @@ set wildmode=list:longest
 set visualbell
 set cursorline
 set ttyfast
-set undofile
 
 set ignorecase
 set smartcase
@@ -34,7 +33,11 @@ set cmdheight=2
 set laststatus=2
 set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ 
 set showcmd
-set relativenumber
+
+if v:version > 702
+  set relativenumber
+  set undofile
+endif
 
 " Keymappings
 nnoremap Y y$
