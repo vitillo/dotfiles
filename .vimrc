@@ -83,6 +83,7 @@ let NERDTreeChDirMode=2
 
 " Session configuration
 let g:session_autosave = 'no'
+let g:session_autoload = 'no'
 
 " Supertab configuration
 let g:SuperTabClosePreviewOnPopupClose = 1
