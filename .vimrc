@@ -22,6 +22,7 @@ set wildmode=list:longest
 set visualbell
 set cursorline
 set ttyfast
+set completeopt+=longest
 
 set ignorecase
 set smartcase
@@ -100,6 +101,7 @@ au filetype c,cpp setlocal cindent shiftwidth=2 " | imap <buffer> <Tab> <Esc>cc
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ formatoptions+=croq softtabstop=4 smartindent
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+\ | imap <silent> <buffer> . .<C-X><C-O>
 
 " Javascript
 " ----------
