@@ -2,6 +2,7 @@ set nocompatible
 syntax on
 filetype on
 filetype plugin on
+filetype indent on
 
 set backspace=indent,eol,start
 set hidden
