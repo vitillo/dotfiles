@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/colorschemes"]
 	path = .vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive
