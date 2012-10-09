@@ -59,8 +59,9 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>o :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggl<CR> 
 nnoremap <leader>s :ConqueTerm bash<CR>
-nnoremap <leader>m :make<CR>
+nnoremap <leader>m :make<CR>:make -C../<CR>
 nnoremap <leader>e :BufExplorer<CR>
+nnoremap <leader>g :Gstatus<CR>
 map <leader>d <plug>NERDCommenterToggle
 map <F2> :SaveSession<CR>
 map <F3> :OpenSession<CR> 
@@ -92,6 +93,9 @@ let g:session_autoload = 'no'
 
 " Supertab configuration
 let g:SuperTabClosePreviewOnPopupClose = 1
+
+" Clang_complete configuration
+let g:clang_use_library = 1
 
 " C, C++ 
 " ------
