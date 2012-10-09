@@ -30,6 +30,8 @@ set smartcase
 set incsearch
 set showmatch
 
+set tags=./tags;
+
 " Command-line configuration
 set cmdheight=2
 set laststatus=2
