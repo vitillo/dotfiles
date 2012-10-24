@@ -102,6 +102,7 @@ let g:clang_use_library = 1
 " C, C++ 
 " ------
 au filetype c,cpp setlocal cindent shiftwidth=2 " | imap <buffer> <Tab> <Esc>cc
+let c_no_curly_error=1 " C++11 support
 
 " Python
 " ------
