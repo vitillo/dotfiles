@@ -61,7 +61,7 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>o :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggl<CR> 
 nnoremap <leader>s :ConqueTerm bash<CR>
-nnoremap <leader>m :make<CR>:make -C../<CR>
+nnoremap <leader>m :make<CR>:make -C../<CR>:make -C../../<CR>:make -C../../../<CR>
 nnoremap <leader>e :BufExplorer<CR>
 nnoremap <leader>g :Gstatus<CR>
 map <leader>d <plug>NERDCommenterToggle
@@ -116,6 +116,12 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 let javascript_enable_domhtmlcss=1
+
+" Java
+" ----------
+autocmd FileType java setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+let java_highlight_java_lang_ids=1
+let java_highlight_functions="style"
 
 " CSS
 " ---
