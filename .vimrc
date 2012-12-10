@@ -114,6 +114,10 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 \ | imap <silent> <buffer> . .<C-X><C-O>
 
+" HTML
+" ----
+autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
 " Javascript
 " ----------
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
