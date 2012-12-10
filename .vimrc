@@ -104,6 +104,9 @@ let g:clang_use_library = 1
 au filetype c,cpp setlocal cindent shiftwidth=2 " | imap <buffer> <Tab> <Esc>cc
 let c_no_curly_error=1 " C++11 support
 
+" Cuda
+autocmd BufNewFile,BufRead *.cu setlocal ft=cpp
+
 " Python
 " ------
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
