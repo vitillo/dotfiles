@@ -48,7 +48,6 @@ nnoremap Y y$
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
-nnoremap s S
 inoremap jj <ESC>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -118,14 +117,18 @@ autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 let javascript_enable_domhtmlcss=1
 
 " Java
-" ----------
+" ----
 autocmd FileType java setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 let java_highlight_java_lang_ids=1
 let java_highlight_functions="style"
 
 " CSS
 " ---
-autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" HTML
+" ----
+autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 " cmake
 " -----
