@@ -48,7 +48,6 @@ nnoremap Y y$
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
-inoremap jj <ESC>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
