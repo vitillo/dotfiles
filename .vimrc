@@ -43,6 +43,15 @@ if v:version > 702
   set undofile
 endif
 
+" Font settings for gvim
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 16
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
+
 " Keymappings
 nnoremap Y y$
 nnoremap ; :
