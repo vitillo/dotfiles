@@ -1,0 +1,25 @@
+[global_config]
+  geometry_hinting = False
+  title_transmit_bg_color = "#624040"
+  dbus = False
+  tab_position = left
+[keybindings]
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    visible_bell = True
+    background_darkness = 0.64
+    background_type = transparent
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    copy_on_selection = True
+    scrollback_infinite = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
