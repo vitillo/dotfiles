@@ -78,7 +78,10 @@ map <F3> :OpenSession<CR>
 au BufEnter * :syntax sync fromstart
 call pathogen#infect()
 
-colorscheme wombat
+if has("gui_running")
+  set background=dark
+  colorscheme solarized
+endif
 
 " ConqueTerm configuration
 let g:ConqueTerm_SessionSupport = 1
