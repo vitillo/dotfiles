@@ -1,7 +1,7 @@
 install: install-vim install-bash install-zsh install-git install-spectrwm install-tmux
 
 install-vim:
-	rm -rfI ~/.vim ~/.vimrc
+	rm -rf ~/.vim ~/.vimrc
 	ln -si $(PWD)/.vim ~/.vim
 	ln -si $(PWD)/.vimrc ~/.vimrc
 
