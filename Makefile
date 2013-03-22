@@ -1,4 +1,4 @@
-install: install-vim install-bash install-zsh install-git install-spectrwm install-tmux
+install: install-vim install-bash install-git install-spectrwm install-tmux install-zsh
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc
