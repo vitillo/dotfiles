@@ -106,8 +106,10 @@ let g:session_autoload = 'no'
 " Supertab configuration
 let g:SuperTabClosePreviewOnPopupClose = 1
 
-" Clang_complete configuration
-let g:clang_use_library = 1
+" Syntastic configuration
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_always_populate_loc_list=1
 
 " C, C++ 
 " ------
