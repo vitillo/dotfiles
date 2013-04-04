@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/vitillo'
 let g:netrw_dirhist_2='/Users/vitillo/sandbox'
 let g:netrw_dirhist_3='/Users/vitillo/sandbox/topcoder'
 let g:netrw_dirhist_4='/Users/vitillo/sandbox/topcoder/817'
 let g:netrw_dirhist_5='/Applications/MacVim.app/Contents/Resources/vim/runtime/doc'
+let g:netrw_dirhist_6='/home/vitillo/sandbox/dotfiles'
