@@ -111,6 +111,10 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list=1
 
+" Gundo configuration
+nnoremap <F5> :GundoToggle<CR>
+let g:gundo_right = 1
+
 " C, C++ 
 " ------
 "au filetype c,cpp setlocal cindent shiftwidth=2 | imap <buffer> <Tab> <Esc>cc
