@@ -1,4 +1,5 @@
-feh --bg-scale ~/.wallpaper.png
+xscreensaver -no-splash&
+radiotray&
 conky&
 thunderbird&
 skype&
