@@ -36,4 +36,4 @@ color2 888888
 color3 444444
 
 TEXT
- Uptime ${uptime} :: CPU ${cpu}% @ ${freq}Mhz :: RAM ${memperc}% :: Disk ${fs_used_perc /}% :: Power ${battery_percent BAT0}%, Remaining ${battery_time BAT0} :: wlp3s0 up ${upspeed wlp3s0} :: wlp3s0 down ${downspeed wlp3s0}
+ Uptime ${uptime} :: CPU ${cpu}% @ ${freq}Mhz ${acpitemp}C:: RAM ${memperc}% :: Disk ${fs_used_perc /}% :: Power ${battery_percent BAT0}%, Remaining ${battery_time BAT0} :: wlp3s0 up ${upspeed wlp3s0} :: wlp3s0 down ${downspeed wlp3s0}
