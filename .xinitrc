@@ -1,4 +1,5 @@
-xrandr -s 1680x1050
-vmware-user-suid-wrapper
 feh --bg-scale ~/.wallpaper.png
-exec /home/vitillo/sandbox/spectrwm/linux/spectrwm
+conky&
+thunderbird&
+skype&
+exec awesome

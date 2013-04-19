@@ -1,8 +1,39 @@
-out_to_x no
-out_to_console yes
+alignment bottom_right
+background yes
+border_width 1
+cpu_avg_samples 2
+default_color FFFFFF
+default_outline_color 222222
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont Sans Mono:size=8
+gap_x 5
+gap_y 0
+minimum_size 1260 6
+maximum_width 1260
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window no
+own_window_class Conky
+own_window_type desktop
+own_window_transparent yes
+stippled_borders 0
 update_interval 1.0
-total_run_times 0
-use_spacer none
-TEXT
-Up:${uptime_short} | RAM:$memperc% | CPU:${cpu}% | FS: ${fs_used_perc}% | IP: ${addr eth0} | Down: ${downspeedf eth0} | Power: ${battery_percent BAT1}%
+uppercase no
+use_spacer left
+show_graph_scale no
+show_graph_range no
+format_human_readable yes
 
+color1 666666
+color2 888888
+color3 444444
+
+TEXT
+ Uptime ${uptime} :: CPU ${cpu}% @ ${freq}Mhz :: RAM ${memperc}% :: Disk ${fs_used_perc /}% :: Power ${battery_percent BAT0}%, Remaining ${battery_time BAT0} :: wlp3s0 up ${upspeedf wlp3s0} :: wlp3s0 down ${downspeedf wlp3s0}
