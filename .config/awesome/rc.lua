@@ -245,6 +245,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
+    awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
@@ -270,7 +271,10 @@ globalkeys = awful.util.table.join(
               end),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end),
-    awful.key({ modkey }, "F12", function () awful.util.spawn("xscreensaver-command -activate") end)
+
+    -- Custom
+    awful.key({ modkey }, "F12", function () awful.util.spawn("xscreensaver-command -activate") end),
+    awful.key({ modkey,           }, "t", function () awful.util.spawn("gtg") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -362,6 +366,14 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Thunderbird"},
+      properties = { tag = tags[1][9]} },
+    { rule = { class = "Skype"},
+      properties = { tag = tags[1][9]} },
+    { rule = { class = "Exe"}, 
+      properties = { floating = true } },
+    { rule = { class = "Liferea"}, 
+      properties = { tag = tags[1][8] } }
 }
 -- }}}
 
