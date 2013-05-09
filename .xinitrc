@@ -1,4 +1,5 @@
-xscreensaver -no-splash&
+synclient TouchPadOff=1
+pulseaudio --start
 radiotray&
 volumeicon&
 conky&
@@ -7,4 +8,7 @@ thunderbird&
 skype&
 dropboxd&
 gtg&
+caffeine&
+xscreensaver -nosplash&
+.screenlayout/layout.sh
 exec awesome
