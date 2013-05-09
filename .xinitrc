@@ -9,6 +9,7 @@ skype&
 dropboxd&
 gtg&
 caffeine&
+nm-applet&
 xscreensaver -nosplash&
 .screenlayout/layout.sh
 exec awesome
