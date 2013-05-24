@@ -14,6 +14,7 @@ install-zsh:
 
 install-git:
 	ln -si $(PWD)/.gitconfig ~/.gitconfig
+	ln -si $(PWD)/.gitignore ~/.gitignore
 
 install-spectrwm:
 	ln -si $(PWD)/.spectrwm.conf ~/.spectrwm.conf

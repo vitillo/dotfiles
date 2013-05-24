@@ -274,7 +274,7 @@ globalkeys = awful.util.table.join(
 
     -- Custom
     awful.key({ modkey }, "F12", function () awful.util.spawn("xscreensaver-command -activate") end),
-    awful.key({ modkey,           }, "t", function () awful.util.spawn("gtg") end)
+    awful.key({ modkey }, "t", function () awful.util.spawn("firefox -new-window www.wunderlist.com") end)
 )
 
 clientkeys = awful.util.table.join(

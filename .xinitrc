@@ -7,9 +7,9 @@ liferea&
 thunderbird&
 skype&
 dropboxd&
-gtg&
 caffeine&
 nm-applet&
+wine .wine/drive_c/Program\ Files\ \(x86\)/Evernote/Evernote/Evernote.exe /Minimize
 xscreensaver -nosplash&
 .screenlayout/layout.sh
 exec awesome
