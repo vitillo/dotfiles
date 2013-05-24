@@ -274,7 +274,10 @@ globalkeys = awful.util.table.join(
 
     -- Custom
     awful.key({ modkey }, "F12", function () awful.util.spawn("xscreensaver-command -activate") end),
-    awful.key({ modkey }, "t", function () awful.util.spawn("firefox -new-window www.wunderlist.com") end)
+    awful.key({ modkey }, "t", function () awful.util.spawn("firefox -new-window www.wunderlist.com") end),
+    awful.key({ }, "XF86AudioLowerVolume",    function () awful.util.spawn("amixer set Master 5000-") end),
+    awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("amixer set Master 5000+") end),
+    awful.key({ }, "XF86AudioMute",    function () awful.util.spawn("amixer set Master toggle") end)
 )
 
 clientkeys = awful.util.table.join(
