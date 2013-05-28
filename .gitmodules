@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
-[submodule ".vim/bundle/conque"]
-	path = .vim/bundle/conque
-	url = https://github.com/rson/vim-conque.git
 [submodule ".vim/bundle/session"]
 	path = .vim/bundle/session
 	url = https://github.com/xolox/vim-session

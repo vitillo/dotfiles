@@ -67,7 +67,6 @@ let mapleader = ","
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>o :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggl<CR> 
-nnoremap <leader>s :ConqueTerm bash<CR>
 nnoremap <leader>m :make<CR>:make -C../<CR>:make -C../../<CR>:make -C../../../<CR>
 nnoremap <leader>e :BufExplorer<CR>
 nnoremap <leader>g :Gstatus<CR>
@@ -82,11 +81,6 @@ if has("gui_running")
   set background=dark
   colorscheme solarized
 endif
-
-" ConqueTerm configuration
-let g:ConqueTerm_SessionSupport = 1
-let g:ConqueTerm_ReadUnfocsed = 1
-let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
 
 " Tagbar configuration
 let g:tagbar_width = 30
@@ -117,7 +111,7 @@ let g:gundo_right = 1
 
 " C, C++ 
 " ------
-"au filetype c,cpp setlocal cindent shiftwidth=2 | imap <buffer> <Tab> <Esc>cc
+au filetype c,cpp setlocal cindent shiftwidth=2 | imap <buffer> <Tab> <Esc>cc
 let c_no_curly_error=1 " C++11 support
 
 " Cuda
