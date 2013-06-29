@@ -97,9 +97,6 @@ let NERDTreeChDirMode=2
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-" Supertab configuration
-let g:SuperTabClosePreviewOnPopupClose = 1
-
 " Syntastic configuration
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
@@ -111,7 +108,7 @@ let g:gundo_right = 1
 
 " C, C++ 
 " ------
-au filetype c,cpp setlocal cindent shiftwidth=2 | imap <buffer> <Tab> <Esc>cc
+au filetype c,cpp setlocal cindent shiftwidth=2 "| imap <buffer> <Tab> <Esc>cc
 let c_no_curly_error=1 " C++11 support
 
 " Cuda
