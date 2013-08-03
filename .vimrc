@@ -106,6 +106,9 @@ let g:syntastic_always_populate_loc_list=1
 nnoremap <F5> :GundoToggle<CR>
 let g:gundo_right = 1
 
+" ISPC
+au BufNewFile,BufRead *.ispc set filetype=ispc cindent shiftwidth=2 syntax=cpp
+
 " C, C++ 
 " ------
 au filetype c,cpp setlocal cindent shiftwidth=2 "| imap <buffer> <Tab> <Esc>cc
