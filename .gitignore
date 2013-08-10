@@ -1,2 +1,8 @@
-*.un~
 *.swp
+*.so
+tags
+*~
+.svn
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
