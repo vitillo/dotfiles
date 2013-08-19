@@ -380,8 +380,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Plugin-container"}, 
       properties = { floating = true } },
-    { rule = { class = "Liferea"}, 
-      properties = { tag = tags[1][8] } }
+    { rule = { class = "Conky"}, 
+      properties = { floating = true } },
 }
 -- }}}
 
@@ -457,6 +457,3 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
-mystatusbar = awful.wibox({ position = "bottom", screen = 1, ontop = false, width = 1, height = 16 })
-

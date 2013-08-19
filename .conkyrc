@@ -1,39 +1,71 @@
-alignment bottom_right
 background yes
-border_width 1
-cpu_avg_samples 2
-default_color FFFFFF
-default_outline_color 222222
+use_xft yes
+xftfont Sans:size=8
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window no
+own_window_transparent yes
+own_window_type desktop
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 100 100
+maximum_width 300
+draw_shades yes
+draw_outline no
 draw_borders no
 draw_graph_borders yes
-draw_outline no
-draw_shades no
-use_xft yes
-xftfont Sans Mono:size=8
-gap_x 5
-gap_y 0
-minimum_size 1260 6
-maximum_width 1260
-net_avg_samples 2
+default_color white
+default_shade_color black
+default_outline_color white
+alignment top_left
+gap_x 12
+gap_y 30
 no_buffers yes
-out_to_console no
-out_to_stderr no
-extra_newline no
-own_window no
-own_window_class Conky
-own_window_type desktop
-own_window_transparent yes
-stippled_borders 0
-update_interval 1.0
 uppercase no
-use_spacer left
-show_graph_scale no
-show_graph_range no
-format_human_readable yes
-
-color1 666666
-color2 888888
-color3 444444
+cpu_avg_samples 2
+override_utf8_locale no
 
 TEXT
- Uptime ${uptime} :: CPU ${cpu}% @ ${freq}Mhz ${acpitemp}C:: RAM ${memperc}% :: Disk ${fs_used_perc /}% :: Power ${battery_percent BAT0}%, Remaining ${battery_time BAT0} :: wlp3s0 up ${upspeed wlp3s0} :: wlp3s0 down ${downspeed wlp3s0}
+${color FF9900}${font sans-serif:bold:size=8:}SYSTEM${hr 2}
+${color FFFF00}${font sans-serif:normal:size=8}$sysname $kernel $alignr $machine
+Host:$alignr$nodename
+Uptime:$alignr$uptime
+File System: $alignr${fs_type}
+Battery: $alignr${battery_percent BAT0}%
+Battery Time: $alignr${battery_time BAT0}
+
+${font sans-serif:bold:size=8}${color FF9900}PROCESSORS ${hr 2}${font sans-serif:normal:size=8}${color 
+FFFF00}
+CPU0: ${cpu cpu0}% ${cpubar cpu0}
+CPU1: ${cpu cpu1}% ${cpubar cpu1}
+CPU2: ${cpu cpu2}% ${cpubar cpu2}
+CPU3: ${cpu cpu3}% ${cpubar cpu3}
+
+${font sans-serif:bold:size=8}${color FF9900}MEMORY ${hr 2}
+${font sans-serif:normal:size=8}${color FFFF00}RAM $alignc $mem / $memmax $alignr $memperc%
+$membar
+
+${font sans-serif:bold:size=8}${color FF9900}DISK ${hr 2} 
+${font sans-serif:normal:size=8}${color FFFF00}/ $alignc ${fs_used /} / ${fs_size /} $alignr${fs_used_perc /}%
+${fs_bar /}
+
+${font sans-serif:bold:size=8}${color FF9900}TOP PROCESSES ${hr 2}
+${font sans-serif:normal:size=8}${color FFFF00}${top name 1}${alignr}${top cpu 1} %
+${top name 2}${alignr}${top cpu 2} %
+$font${top name 3}${alignr}${top cpu 3} %
+$font${top name 4}${alignr}${top cpu 4} %
+$font${top name 5}${alignr}${top cpu 5} %
+
+${font sans-serif:bold:size=8}${color FF9900}NETWORK ${hr 2}
+${font sans-serif:normal:size=8}${color FFFF00}IP address: $alignr ${addr wlp3s0}
+ESSID: $alignr ${wireless_essid wlp3s0}
+Connection Quality: $alignr ${wireless_link_qual_perc wlp3s0}%
+
+$alignr Download
+${downspeedgraph wlp3s0}
+${downspeed wlp3s0}/s $alignr ${totaldown wlp3s0}
+
+$alignr Upload
+${upspeedgraph wlp3s0}
+${upspeed wlp3s0}/s $alignr ${totalup wlp3s0}
