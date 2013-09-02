@@ -38,4 +38,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export CVS_RSH=ssh
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:$PATH
