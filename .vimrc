@@ -84,10 +84,10 @@ map <leader>q :cclose<CR> :lclose<CR>
 au BufEnter * :syntax sync fromstart
 call pathogen#infect()
 
-if has("gui_running")
-  set background=dark
-  colorscheme solarized
-endif
+set background=dark
+let g:solarized_termtrans = 1
+let g:solarized_termcolors = 256
+colorscheme solarized
 
 " Tagbar configuration
 let g:tagbar_width = 30
