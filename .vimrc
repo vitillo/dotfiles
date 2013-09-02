@@ -73,6 +73,13 @@ nnoremap <leader>g :Gstatus<CR>
 map <leader>d <plug>NERDCommenterToggle
 map <F2> :SaveSession<CR>
 map <F3> :OpenSession<CR> 
+map <leader>q :cclose<CR> :lclose<CR>
+
+" Handy to edit foreign code
+:nmap <leader>t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+:nmap <leader>T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+:nmap <leader>M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+:nmap <leader>m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
 au BufEnter * :syntax sync fromstart
 call pathogen#infect()
@@ -101,10 +108,23 @@ let g:session_autoload = 'no'
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_c_check_header          = 0
+let g:syntastic_c_compiler_options      = ' -Wextra -Wall'
+let g:syntastic_c_remove_include_errors = 1
+let g:syntastic_cpp_compiler_options = ' -Wextra -Wall -std=c++0x'
 
 " Gundo configuration
 nnoremap <F5> :GundoToggle<CR>
 let g:gundo_right = 1
+
+" Ctrlp configuration
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 " ISPC
 au BufNewFile,BufRead *.ispc set filetype=ispc cindent shiftwidth=2 syntax=cpp
