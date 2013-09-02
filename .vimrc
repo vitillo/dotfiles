@@ -75,6 +75,13 @@ map <F2> :SaveSession<CR>
 map <F3> :OpenSession<CR> 
 map <leader>q :cclose<CR> :lclose<CR>
 
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+
+" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+
 " Handy to edit foreign code
 :nmap <leader>t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 :nmap <leader>T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
