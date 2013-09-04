@@ -64,14 +64,14 @@ nnoremap <C-l> <C-w>l
 let mapleader = ","
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>o :NERDTreeToggle<CR>
-nnoremap <leader>b :TagbarToggl<CR> 
-nnoremap <leader>m :make<CR>:make -C../<CR>:make -C../../<CR>:make -C../../../<CR>
+nnoremap <leader>b :TagbarToggle<CR>
+nnoremap <leader>c :make<CR>:make -C../<CR>:make -C../../<CR>:make -C../../../<CR>
 nnoremap <leader>e :BufExplorer<CR>
 nnoremap <leader>g :Gstatus<CR>
 map <leader>d <plug>NERDCommenterToggle
+map <leader>q :cclose<CR> :lclose<CR>
 map <F2> :SaveSession<CR>
 map <F3> :OpenSession<CR> 
-map <leader>q :cclose<CR> :lclose<CR>
 
 " Yank text to the OS X clipboard
 noremap <leader>y "*y
