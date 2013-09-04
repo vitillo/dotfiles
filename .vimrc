@@ -81,10 +81,8 @@ noremap <leader>yy "*Y
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Handy to edit foreign code
-:nmap <leader>t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-:nmap <leader>T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
-:nmap <leader>M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
-:nmap <leader>m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+:nmap <leader>t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+:nmap <leader>T :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 
 au BufEnter * :syntax sync fromstart
 call pathogen#infect()
