@@ -102,8 +102,6 @@ let g:tagbar_autoshowtag = 1
 
 " NERDTree configuration
 let NERDTreeChDirMode=2
-"autocmd vimenter * NERDTree
-"autocmd vimenter * wincmd l
 
 " Session configuration
 let g:session_autosave = 'no'
@@ -112,7 +110,7 @@ let g:session_autoload = 'no'
 " Syntastic configuration
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
-let g:syntastic_always_populate_loc_list=1
+let g:syntastic_always_populate_loc_list= 1
 let g:syntastic_c_check_header          = 0
 let g:syntastic_c_compiler_options      = ' -Wextra -Wall'
 let g:syntastic_c_remove_include_errors = 1
@@ -131,15 +129,16 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
 " ISPC
-au BufNewFile,BufRead *.ispc set filetype=ispc cindent shiftwidth=2 syntax=cpp
+au BufNewFile,BufRead *.ispc setlocal ft=cpp cindent shiftwidth=2
 
 " C, C++ 
 " ------
-au filetype c,cpp setlocal cindent shiftwidth=2 "| imap <buffer> <Tab> <Esc>cc
+au FileType c,cpp setlocal cindent shiftwidth=2
+au FileType c,cpp let b:syntastic_checkers = ['gcc']
 let c_no_curly_error=1 " C++11 support
 
 " Cuda
-autocmd BufNewFile,BufRead *.cu setlocal ft=cpp
+au BufNewFile,BufRead *.cu setlocal ft=cpp cindent shiftwidth=2
 
 " Python
 " ------
