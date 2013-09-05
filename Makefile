@@ -1,12 +1,9 @@
-install: install-vim install-bash install-git install-spectrwm install-tmux install-zsh
+install: install-vim install-git install-awesome install-tmux install-zsh
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc
 	ln -si $(PWD)/.vim ~/.vim
 	ln -si $(PWD)/.vimrc ~/.vimrc
-
-install-bash:
-	ln -si $(PWD)/.bashrc ~/.bashrc
 
 install-zsh:
 	wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
@@ -16,10 +13,8 @@ install-git:
 	ln -si $(PWD)/.gitconfig ~/.gitconfig
 	ln -si $(PWD)/.gitignore ~/.gitignore
 
-install-spectrwm:
-	ln -si $(PWD)/.spectrwm.conf ~/.spectrwm.conf
+install-awesome:
 	ln -si $(PWD)/.wallpaper.png ~/.wallpaper.png
-	ln -si $(PWD)/.xinitrc ~/.xinitrc
 	ln -si $(PWD)/.conkyrc ~/.conkyrc
 
 	mkdir -p ~/.config/terminator
