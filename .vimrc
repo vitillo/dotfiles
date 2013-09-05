@@ -140,6 +140,9 @@ let c_no_curly_error=1 " C++11 support
 " Cuda
 au BufNewFile,BufRead *.cu setlocal ft=cpp cindent shiftwidth=2
 
+" OpenCL
+au BufNewFile,BufRead *.cl setlocal ft=cpp cindent shiftwidth=2
+
 " Python
 " ------
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
