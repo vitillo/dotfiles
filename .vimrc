@@ -65,7 +65,7 @@ let mapleader = ","
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>o :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggle<CR>
-nnoremap <leader>c :make<CR>:make -C../<CR>:make -C../../<CR>:make -C../../../<CR>
+nnoremap <leader>c :silent make\|redraw!\|cc<CR>
 nnoremap <leader>e :BufExplorer<CR>
 nnoremap <leader>g :Gstatus<CR>
 map <leader>d <plug>NERDCommenterToggle
