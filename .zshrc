@@ -40,3 +40,4 @@ source $ZSH/oh-my-zsh.sh
 export CVS_RSH=ssh
 export TERM=xterm-256color
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:$PATH
+unset  SSH_ASKPASS
