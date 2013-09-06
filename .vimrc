@@ -8,6 +8,7 @@ set backspace=indent,eol,start
 set hidden
 set title
 set mouse=a
+set mousehide
 set virtualedit=onemore
 set history=1000
 
@@ -30,6 +31,10 @@ set smartcase
 set incsearch
 set showmatch
 
+set backspace=indent,eol,start  " Backspace for dummies"
+set linespace=0                 " No extra spaces between rows"
+set winminheight=0              " Windows can be 0 line high"
+
 set tags=./tags;
 
 " Command-line configuration
@@ -37,6 +42,9 @@ set cmdheight=2
 set laststatus=2
 set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ 
 set showcmd
+
+set backupdir^=~/.vim/_backup//    " where to put backup files.
+set directory^=~/.vim/_temp//      " where to put swap files.
 
 if v:version > 702
   set relativenumber
@@ -48,8 +56,15 @@ if has("gui_running")
   set guifont=Anonymous\ Pro\ 13
 endif
 
+" Automatically resize splits when resizing MacVim window
+autocmd VimResized * wincmd =
+
 " Yank text to the clipboard
-set clipboard=unnamed
+if has ('x') && has ('gui') " On Linux use + register for copy-paste
+  set clipboard=unnamedplus
+elseif has ('gui')          " On mac and Windows, use * register for copy-paste
+  set clipboard=unnamed
+endif
 
 " Automatically open, but do not go to (if there are errors) the quickfix /
 " location list window, or close it when is has become empty.
@@ -70,6 +85,17 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <F2> :SaveSession<CR>
 nnoremap <F3> :OpenSession<CR> 
+
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
+" Fix home and end keybindings for screen, particularly on mac
+" - for some reason this fixes the arrow keys too. huh.
+map [F $
+imap [F $
+map [H g0
+imap [H g0
 
 " Leader keymappings
 let mapleader = ","
@@ -113,6 +139,9 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle "pangloss/vim-javascript"
 
 " solarized configuration
 set background=dark
@@ -146,6 +175,7 @@ let g:syntastic_cpp_compiler_options = ' -Wextra -Wall -std=c++0x'
 
 " undotree configuration
 nnoremap <leader>u :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle=1
 
 " ctrlp configuration
 let g:ctrlp_match_window_bottom = 0
@@ -154,6 +184,11 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
+
+" airline configuration
+let g:airline_theme='solarized'
+let g:airline_left_sep='›'
+let g:airline_right_sep='‹'
 
 " ISPC
 au BufNewFile,BufRead *.ispc setlocal ft=cpp cindent shiftwidth=2
@@ -172,10 +207,8 @@ au BufNewFile,BufRead *.cl setlocal ft=cpp cindent shiftwidth=2
 
 " Python
 " ------
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
-\ formatoptions+=croq softtabstop=4 smartindent
-\ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-\ | imap <silent> <buffer> . .<C-X><C-O>
+" make Python follow PEP8 for whitespace ( http://www.python.org/dev/peps/pep-0008/ )
+au FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4
 
 " HTML
 " ----
