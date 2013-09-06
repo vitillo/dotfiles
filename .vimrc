@@ -45,9 +45,7 @@ endif
 
 " Font settings for gvim
 if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Anonymous\ Pro\ 13
-  endif
+  set guifont=Anonymous\ Pro\ 13
 endif
 
 " Yank text to the clipboard
@@ -113,6 +111,7 @@ Bundle 'mbbill/undotree'
 Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-surround'
 
 " solarized configuration
 set background=dark
@@ -204,6 +203,3 @@ autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 " CMake
 " -----
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
-
-" Run helptags on all plugins
-:Helptags
