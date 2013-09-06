@@ -50,8 +50,16 @@ if has("gui_running")
   endif
 endif
 
-" Yank text to the OS X clipboard
+" Yank text to the clipboard
 set clipboard=unnamed
+
+" Automatically open, but do not go to (if there are errors) the quickfix /
+" location list window, or close it when is has become empty.
+autocmd QuickFixCmdPost [^l]* nested botright cwindow
+autocmd QuickFixCmdPost    l* nested botright lwindow
+
+" sudo write this
+cmap W! w !sudo tee % >/dev/null
 
 " Keymappings
 nnoremap Y y$
@@ -62,6 +70,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <F2> :SaveSession<CR>
+nnoremap <F3> :OpenSession<CR> 
 
 " Leader keymappings
 let mapleader = ","
@@ -71,12 +81,7 @@ nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>c :silent make\|redraw!\|cc<CR>
 nnoremap <leader>e :CtrlPBuffer<CR>
 nnoremap <leader>g :Gstatus<CR>
-map <leader>q :cclose<CR> :lclose<CR>
-map <F2> :SaveSession<CR>
-map <F3> :OpenSession<CR> 
-
-" Preserve indentation while pasting text from the OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+nnoremap <leader>q :cclose<CR> :lclose<CR>
 
 " Handy to edit foreign code
 :nmap <leader>t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
@@ -196,17 +201,9 @@ autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 " ----
 autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
-" cmake
+" CMake
 " -----
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
-" Automatically open, but do not go to (if there are errors) the quickfix /
-" location list window, or close it when is has become empty.
-autocmd QuickFixCmdPost [^l]* nested botright cwindow
-autocmd QuickFixCmdPost    l* nested botright lwindow
-
 " Run helptags on all plugins
 :Helptags
-
-" sudo write this
-cmap W! w !sudo tee % >/dev/null
