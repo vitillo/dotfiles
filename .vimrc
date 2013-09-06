@@ -66,9 +66,8 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>o :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>c :silent make\|redraw!\|cc<CR>
-nnoremap <leader>e :BufExplorer<CR>
+nnoremap <leader>e :CtrlPBuffer<CR>
 nnoremap <leader>g :Gstatus<CR>
-map <leader>d <plug>NERDCommenterToggle
 map <leader>q :cclose<CR> :lclose<CR>
 map <F2> :SaveSession<CR>
 map <F3> :OpenSession<CR> 
@@ -85,16 +84,40 @@ noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 :nmap <leader>T :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 :nmap <leader>m :set noexpandtab tabstop=8 shiftwidth=8 softtabstop=8<CR>
 
+" Pathogen configuration
 au BufEnter * :syntax sync fromstart
 call pathogen#infect()
 
+" Vundle configuration
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'mileszs/ack.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+Bundle 'mbbill/undotree'
+Bundle 'bling/vim-airline'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'Valloric/YouCompleteMe'
+
+" solarized configuration
 set background=dark
 let g:solarized_termtrans = 1
 let g:solarized_termcolors = 256
 let g:solarized_contrast = "high"
 colorscheme solarized
 
-" Tagbar configuration
+" tagbar configuration
 let g:tagbar_width = 30
 let g:tagbar_compact = 1
 let g:tagbar_singleclick = 1
@@ -102,12 +125,13 @@ let g:tagbar_autoshowtag = 1
 
 " NERDTree configuration
 let NERDTreeChDirMode=2
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Session configuration
+" session configuration
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-" Syntastic configuration
+" syntastic configuration
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list= 1
@@ -116,10 +140,10 @@ let g:syntastic_c_compiler_options      = ' -Wextra -Wall'
 let g:syntastic_c_remove_include_errors = 1
 let g:syntastic_cpp_compiler_options = ' -Wextra -Wall -std=c++0x'
 
-" Gundo configuration
+" undotree configuration
 nnoremap <leader>u :UndotreeToggle<CR>
 
-" Ctrlp configuration
+" ctrlp configuration
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
