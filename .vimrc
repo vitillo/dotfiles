@@ -112,6 +112,9 @@ nnoremap <leader>q :cclose<CR> :lclose<CR>
 :nmap <leader>T :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 :nmap <leader>m :set noexpandtab tabstop=8 shiftwidth=8 softtabstop=8<CR>
 
+" make configuration
+:let &makeprg = 'if [ -f Makefile ]; then make; else make -C ..; fi'
+
 " Pathogen configuration
 au BufEnter * :syntax sync fromstart
 call pathogen#infect()
