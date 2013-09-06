@@ -112,6 +112,7 @@ Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-surround'
+Bundle 'godlygeek/tabular'
 
 " solarized configuration
 set background=dark
