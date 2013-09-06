@@ -117,8 +117,7 @@ let g:syntastic_c_remove_include_errors = 1
 let g:syntastic_cpp_compiler_options = ' -Wextra -Wall -std=c++0x'
 
 " Gundo configuration
-nnoremap <F5> :GundoToggle<CR>
-let g:gundo_right = 1
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " Ctrlp configuration
 let g:ctrlp_match_window_bottom = 0
