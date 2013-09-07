@@ -35,6 +35,10 @@ set backspace=indent,eol,start  " Backspace for dummies"
 set linespace=0                 " No extra spaces between rows"
 set winminheight=0              " Windows can be 0 line high"
 
+" Show trailing whitespace
+set listchars=tab:\ \ ,trail:.
+set list
+
 set tags=./tags;
 
 " Command-line configuration
