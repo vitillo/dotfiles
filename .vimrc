@@ -149,6 +149,12 @@ Bundle 'godlygeek/tabular'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle "pangloss/vim-javascript"
+Bundle "maxbrunsfeld/vim-yankstack"
+
+" yankstack configuration
+let g:yankstack_map_keys = 0
+nmap <leader>y <Plug>yankstack_substitute_newer_paste
+nmap <leader>e <Plug>yankstack_substitute_older_paste
 
 " solarized configuration
 set background=dark
