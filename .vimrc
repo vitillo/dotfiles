@@ -150,6 +150,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle "pangloss/vim-javascript"
 Bundle "maxbrunsfeld/vim-yankstack"
+Bundle "tpope/vim-repeat"
 
 " yankstack configuration
 let g:yankstack_map_keys = 0
