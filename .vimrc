@@ -11,6 +11,7 @@ set mouse=a
 set mousehide
 set virtualedit=onemore
 set history=1000
+set report=0
 
 set gdefault
 set autochdir
@@ -24,7 +25,10 @@ set wildmode=list:longest
 set visualbell
 set cursorline
 set ttyfast
+set noerrorbells
 set completeopt+=longest
+set splitbelow " New window goes below
+set splitright " New windows goes right
 
 set ignorecase
 set smartcase
@@ -94,12 +98,27 @@ nnoremap <F3> :OpenSession<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" Use very magic regexps
+cnoremap s/ s/\v
+
+" Better mark jumping (line + col)
+nnoremap ' `
+
+" Speed up viewport scrolling
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
 " Fix home and end keybindings for screen, particularly on mac
-" - for some reason this fixes the arrow keys too. huh.
 map [F $
 imap [F $
 map [H g0
 imap [H g0
+
+" Fix page up and down
+map <PageUp> <C-U>
+map <PageDown> <C-D>
+imap <PageUp> <C-O><C-U>
+imap <PageDown> <C-O><C-D>
 
 " Leader keymappings
 let mapleader = ","
@@ -110,12 +129,19 @@ nnoremap <leader>c :silent make\|redraw!\|cc<CR>
 nnoremap <leader>e :CtrlPBuffer<CR>
 nnoremap <leader>g :Gstatus<CR>
 nnoremap <leader>s :silent Ggrep 
-nnoremap <leader>q :cclose<CR> :lclose<CR>
+nnoremap <leader>qq :cclose<CR> :lclose<CR>
 
 " Handy to edit foreign code
 :nmap <leader>t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 :nmap <leader>T :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 :nmap <leader>m :set noexpandtab tabstop=8 shiftwidth=8 softtabstop=8<CR>
+
+" Paste toggle
+set pastetoggle=<leader>p
+map <leader>p :set invpaste paste?<CR>
+
+" Clear last search
+map <silent> <leader>qs <Esc>:noh<CR>
 
 " make configuration
 :let &makeprg = 'if [ -f Makefile ]; then make; else make -C ..; fi'
@@ -128,31 +154,39 @@ call pathogen#infect()
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Raimondi/delimitMate'
+Bundle "aghareza/vim-gitgrep"
+Bundle "maxbrunsfeld/vim-yankstack"
+Bundle "pangloss/vim-javascript"
+Bundle "tpope/vim-repeat"
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-session'
+Bundle 'Raimondi/delimitMate'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'mbbill/undotree'
 Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'tpope/vim-surround'
+Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-unimpaired'
+Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'mbbill/undotree'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle "pangloss/vim-javascript"
-Bundle "maxbrunsfeld/vim-yankstack"
-Bundle "tpope/vim-repeat"
-Bundle "aghareza/vim-gitgrep"
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
+
+" Tabular configuration
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
+vmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
+nmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
+vmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
 
 " yankstack configuration
 let g:yankstack_map_keys = 0
