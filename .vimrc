@@ -125,16 +125,16 @@ let mapleader = ","
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>o :NERDTreeToggle<CR>
 nnoremap <leader>b :TagbarToggle<CR>
-nnoremap <leader>c :silent make\|redraw!\|cc<CR>
+nnoremap <leader>c :Make<CR>
 nnoremap <leader>e :CtrlPBuffer<CR>
 nnoremap <leader>g :Gstatus<CR>
 nnoremap <leader>s :silent Ggrep 
 nnoremap <leader>qq :cclose<CR> :lclose<CR>
 
 " Handy to edit foreign code
-:nmap <leader>t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
-:nmap <leader>T :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-:nmap <leader>m :set noexpandtab tabstop=8 shiftwidth=8 softtabstop=8<CR>
+:nmap <leader>t2 :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+:nmap <leader>t4 :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+:nmap <leader>t8 :set noexpandtab tabstop=8 shiftwidth=8 softtabstop=8<CR>
 
 " Paste toggle
 set pastetoggle=<leader>p
@@ -174,6 +174,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
@@ -190,8 +191,8 @@ vmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
 
 " yankstack configuration
 let g:yankstack_map_keys = 0
-nmap <leader>y <Plug>yankstack_substitute_newer_paste
-nmap <leader>e <Plug>yankstack_substitute_older_paste
+nmap <leader>j <Plug>yankstack_substitute_newer_paste
+nmap <leader>k <Plug>yankstack_substitute_older_paste
 
 " solarized configuration
 set background=dark
@@ -219,7 +220,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list= 1
 let g:syntastic_c_check_header          = 0
-let g:syntastic_c_compiler_options      = ' -Wextra -Wall'
+let g:syntastic_c_compiler_options      = ' -Wextra -Wall -std=c99'
 let g:syntastic_c_remove_include_errors = 1
 let g:syntastic_cpp_compiler_options = ' -Wextra -Wall -std=c++0x'
 
