@@ -109,6 +109,7 @@ nnoremap <leader>b :TagbarToggle<CR>
 nnoremap <leader>c :silent make\|redraw!\|cc<CR>
 nnoremap <leader>e :CtrlPBuffer<CR>
 nnoremap <leader>g :Gstatus<CR>
+nnoremap <leader>s :silent Ggrep 
 nnoremap <leader>q :cclose<CR> :lclose<CR>
 
 " Handy to edit foreign code
