@@ -61,6 +61,7 @@ endif
 
 " Font settings for gvim
 if has("gui_running")
+  set guioptions-=e
   set guifont=Anonymous\ Pro\ 13
 endif
 
@@ -198,6 +199,10 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+Bundle 'gcmt/taboo.vim'
+
+" Taboo configuration
+let g:taboo_tab_format = " %N %f "
 
 " Tabular configuration
 nmap <Leader>a= :Tabularize /=<CR>
