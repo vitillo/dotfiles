@@ -229,7 +229,7 @@ set background=dark
 let g:solarized_termtrans = 1
 let g:solarized_termcolors = 256
 let g:solarized_contrast = "high"
-let g:solarized_visibility="low"
+let g:solarized_visibility="low" " https://github.com/altercation/solarized/issues/53
 colorscheme solarized
 
 " tagbar configuration
