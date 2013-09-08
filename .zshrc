@@ -42,5 +42,6 @@ export TERM=xterm-256color
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:$PATH
 
 unset  SSH_ASKPASS
+unsetopt histverify
 
 perl -E ' print "\e[?1005h\e[?1002h" ' # needed for mouse support in mosh
