@@ -120,16 +120,35 @@ map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
 imap <PageDown> <C-O><C-D>
 
+"When typing a string, your quotes auto complete. Move past the quote
+"while still in insert mode by hitting Ctrl-a. Example:
+"
+" type 'foo<c-a>
+"
+" the first quote will autoclose so you'll get 'foo' and hitting <c-a> will
+" put the cursor right after the quote
+imap <C-a> <esc>wa
+
 " Leader keymappings
 let mapleader = ","
-nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>o :NERDTreeToggle<CR>
-nnoremap <leader>b :TagbarToggle<CR>
-nnoremap <leader>c :Make<CR>
+nnoremap <leader>z :TagbarToggle<CR>
+nnoremap <leader>m :Make<CR>
 nnoremap <leader>e :CtrlPBuffer<CR>
 nnoremap <leader>g :Gstatus<CR>
 nnoremap <leader>s :silent Ggrep 
-nnoremap <leader>qq :cclose<CR> :lclose<CR>
+nnoremap <leader>q :cclose<CR> :lclose<CR>
+
+" Use numbers to pick the tab you want
+map <leader>1 :tabn 1<cr>
+map <leader>2 :tabn 2<cr>
+map <leader>3 :tabn 3<cr>
+map <leader>4 :tabn 4<cr>
+map <leader>5 :tabn 5<cr>
+map <leader>6 :tabn 6<cr>
+map <leader>7 :tabn 7<cr>
+map <leader>8 :tabn 8<cr>
+map <leader>9 :tabn 9<cr>
 
 " Handy to edit foreign code
 :nmap <leader>t2 :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
@@ -141,7 +160,7 @@ set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
 
 " Clear last search
-map <silent> <leader>qs <Esc>:noh<CR>
+map <silent> // <Esc>:noh<CR>
 
 " make configuration
 :let &makeprg = 'if [ -f Makefile ]; then make; else make -C ..; fi'
@@ -154,7 +173,6 @@ call pathogen#infect()
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle "aghareza/vim-gitgrep"
 Bundle "maxbrunsfeld/vim-yankstack"
 Bundle "pangloss/vim-javascript"
 Bundle "tpope/vim-repeat"
@@ -208,7 +226,11 @@ let g:tagbar_singleclick = 1
 let g:tagbar_autoshowtag = 1
 
 " NERDTree configuration
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinSize = 30
 let NERDTreeChDirMode=2
+let g:nerdtree_tabs_focus_on_files = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " session configuration
@@ -235,6 +257,7 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " airline configuration
 let g:airline_theme='solarized'
