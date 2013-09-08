@@ -4,7 +4,6 @@ filetype on
 filetype plugin on
 filetype indent on
 
-set backspace=indent,eol,start
 set hidden
 set title
 set mouse=a
@@ -18,7 +17,6 @@ set autochdir
 set autoread
 set autowrite
 set enc=utf-8
-set scrolloff=5
 
 set wildmenu
 set wildmode=list:longest
@@ -35,9 +33,11 @@ set smartcase
 set incsearch
 set showmatch
 
-set backspace=indent,eol,start  " Backspace for dummies"
-set linespace=0                 " No extra spaces between rows"
-set winminheight=0              " Windows can be 0 line high"
+set backspace=indent,eol,start  " Backspace for dummies
+set linespace=0                 " No extra spaces between rows
+set winminheight=0              " Windows can be 0 line high
+set scrolloff=5
+set nowrap
 
 " Show trailing whitespace
 set listchars=tab:\ \ ,trail:.
@@ -83,6 +83,9 @@ autocmd QuickFixCmdPost    l* nested botright lwindow
 " sudo write this
 cmap W! w !sudo tee % >/dev/null
 
+" Clear last search
+map <silent> // <Esc>:noh<CR>
+
 " Keymappings
 nnoremap Y y$
 nnoremap ; :
@@ -121,8 +124,8 @@ map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
 imap <PageDown> <C-O><C-D>
 
-"When typing a string, your quotes auto complete. Move past the quote
-"while still in insert mode by hitting Ctrl-a. Example:
+" When typing a string, your quotes auto complete. Move past the quote
+" while still in insert mode by hitting Ctrl-a. Example:
 "
 " type 'foo<c-a>
 "
@@ -160,8 +163,11 @@ map <leader>9 :tabn 9<cr>
 set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
 
-" Clear last search
-map <silent> // <Esc>:noh<CR>
+" Strip all trailing whitespace in file
+function! StripWhitespace ()
+    exec ':%s/ \+$//gc'
+endfunction
+map ,s :call StripWhitespace ()<CR>
 
 " make configuration
 :let &makeprg = 'if [ -f Makefile ]; then make; else make -C ..; fi'
