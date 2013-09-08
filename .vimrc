@@ -38,6 +38,7 @@ set linespace=0                 " No extra spaces between rows
 set winminheight=0              " Windows can be 0 line high
 set scrolloff=5
 set nowrap
+set nostartofline
 
 " Show trailing whitespace
 set listchars=tab:\ \ ,trail:.
