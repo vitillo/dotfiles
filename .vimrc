@@ -13,7 +13,6 @@ set history=1000
 set report=0
 
 set gdefault
-set autochdir
 set autoread
 set autowrite
 set enc=utf-8
