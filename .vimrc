@@ -292,6 +292,9 @@ au BufNewFile,BufRead *.cu setlocal ft=cpp cindent shiftwidth=2
 " OpenCL
 au BufNewFile,BufRead *.cl setlocal ft=cpp cindent shiftwidth=2
 
+" UPC
+au BufNewFile,BufRead *.upc setlocal ft=c cindent shiftwidth=2
+
 " Python
 " ------
 " make Python follow PEP8 for whitespace ( http://www.python.org/dev/peps/pep-0008/ )
