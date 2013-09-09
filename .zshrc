@@ -45,3 +45,11 @@ unset  SSH_ASKPASS
 unsetopt histverify
 
 perl -E ' print "\e[?1005h\e[?1002h" ' # needed for mouse support in mosh
+
+# Used to persistently attach a tmux session over ssh
+function rtmux {
+  case "$2" in
+      "") autossh -M 0 $1 -t "if tmux -qu has; then tmux -qu attach; else EDITOR=vim tmux -qu new; fi";;
+       *) autossh -M 0 $1 -t "if tmux -qu has -t $2; then tmux -qu attach -t $2; else EDITOR=vim tmux -qu new -s $2; fi";;
+  esac
+}
