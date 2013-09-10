@@ -206,6 +206,14 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'gcmt/taboo.vim'
+Bundle 'benmills/vimux'
+
+" Vimux configuration
+map <leader>vp :VimuxPromptCommand<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vx :VimuxInterruptRunner<CR>
+map <leader>l :VimuxRunLastCommand<CR>
 
 " Taboo configuration
 let g:taboo_tab_format = " %N %f "
