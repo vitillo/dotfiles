@@ -190,9 +190,9 @@ Bundle "tpope/vim-repeat"
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'gcmt/taboo.vim'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
@@ -207,10 +207,10 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'vitillo/vim-colors-solarized'
+Bundle 'vitillo/vimux'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
-Bundle 'gcmt/taboo.vim'
-Bundle 'vitillo/vimux'
 
 " Vimux configuration
 nmap <leader>vp :VimuxPromptCommand<CR>
