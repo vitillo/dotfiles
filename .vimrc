@@ -144,15 +144,15 @@ nnoremap <leader>s :silent Ggrep
 nnoremap <leader>q :cclose<CR> :lclose<CR>
 
 " Use numbers to pick the tab you want
-map <leader>1 :tabn 1<cr>
-map <leader>2 :tabn 2<cr>
-map <leader>3 :tabn 3<cr>
-map <leader>4 :tabn 4<cr>
-map <leader>5 :tabn 5<cr>
-map <leader>6 :tabn 6<cr>
-map <leader>7 :tabn 7<cr>
-map <leader>8 :tabn 8<cr>
-map <leader>9 :tabn 9<cr>
+nmap <leader>1 :tabn 1<cr>
+nmap <leader>2 :tabn 2<cr>
+nmap <leader>3 :tabn 3<cr>
+nmap <leader>4 :tabn 4<cr>
+nmap <leader>5 :tabn 5<cr>
+nmap <leader>6 :tabn 6<cr>
+nmap <leader>7 :tabn 7<cr>
+nmap <leader>8 :tabn 8<cr>
+nmap <leader>9 :tabn 9<cr>
 
 " Handy to edit foreign code
 :nmap <leader>t2 :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
@@ -161,13 +161,13 @@ map <leader>9 :tabn 9<cr>
 
 " Paste toggle
 set pastetoggle=<leader>p
-map <leader>p :set invpaste paste?<CR>
+nmap <leader>p :set invpaste paste?<CR>
 
 " Strip all trailing whitespace in file
 function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
-map ,s :call StripWhitespace ()<CR>
+nmap ,s :call StripWhitespace ()<CR>
 
 " make configuration
 :let &makeprg = 'if [ -f Makefile ]; then make; else make -C ..; fi'
@@ -206,14 +206,14 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'gcmt/taboo.vim'
-Bundle 'benmills/vimux'
+Bundle 'vitillo/vimux'
 
 " Vimux configuration
-map <leader>vp :VimuxPromptCommand<CR>
-map <Leader>vi :VimuxInspectRunner<CR>
-map <Leader>vq :VimuxCloseRunner<CR>
-map <Leader>vx :VimuxInterruptRunner<CR>
-map <leader>l :VimuxRunLastCommand<CR>
+nmap <leader>vp :VimuxPromptCommand<CR>
+nmap <Leader>vi :VimuxInspectRunner<CR>
+nmap <Leader>vq :VimuxCloseRunner<CR>
+nmap <Leader>vx :VimuxInterruptRunner<CR>
+nmap <leader>l :VimuxRunLastCommand<CR>
 
 " Taboo configuration
 let g:taboo_tab_format = " %N %f "
