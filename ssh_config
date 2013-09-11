@@ -1,2 +1,3 @@
 ServerAliveInterval 30
 ServerAliveCountMax 4
+ForwardX11Trusted yes
