@@ -69,9 +69,13 @@ endif
 autocmd VimResized * wincmd =
 
 " Yank text to the clipboard
-if has ('x') && has ('gui') " On Linux use + register for copy-paste
-  set clipboard=unnamedplus
-elseif has ('gui')          " On mac and Windows, use * register for copy-paste
+if has("unix")
+  if system("uname") == "Linux\n"
+    set clipboard=unnamedplus
+  else
+    set clipboard=unnamed
+  endif
+else
   set clipboard=unnamed
 endif
 
