@@ -201,6 +201,7 @@ Bundle 'mbbill/undotree'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
@@ -297,7 +298,7 @@ au BufNewFile,BufRead *.ispc setlocal ft=cpp cindent shiftwidth=2
 " C, C++ 
 " ------
 au FileType c,cpp setlocal cindent shiftwidth=2
-au FileType c,cpp let b:syntastic_checkers = ['gcc']
+au FileType c,cpp let b:syntastic_checkers = [] " gcc and ycm are too slow...
 let c_no_curly_error=1 " C++11 support
 
 " Cuda
