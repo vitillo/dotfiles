@@ -237,10 +237,10 @@ nmap <leader>k <Plug>yankstack_substitute_older_paste
 
 " solarized configuration
 set background=dark
+set t_Co=16
 let g:solarized_termtrans = 1
-let g:solarized_termcolors = 256
+let g:solarized_termcolors = 16
 let g:solarized_contrast = "high"
-let g:solarized_visibility="low" " https://github.com/altercation/solarized/issues/53
 colorscheme solarized
 
 " tagbar configuration
