@@ -243,6 +243,7 @@ let g:solarized_contrast = "high"
 colorscheme solarized
 
 " tagbar configuration
+let g:tagbar_sort = 0
 let g:tagbar_width = 30
 let g:tagbar_compact = 1
 let g:tagbar_singleclick = 1
@@ -287,6 +288,8 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:airline_theme='solarized'
 let g:airline_left_sep='›'
 let g:airline_right_sep='‹'
+let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 
 " ISPC
 au BufNewFile,BufRead *.ispc setlocal ft=cpp cindent shiftwidth=2
