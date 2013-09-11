@@ -40,7 +40,7 @@ set nowrap
 set nostartofline
 
 " Show trailing whitespace
-set listchars=tab:→\ ,trail:◇,extends:»,precedes:«
+set listchars=tab:\ \ ,trail:◇,extends:»,precedes:«
 set list
 
 set tags=./tags;
