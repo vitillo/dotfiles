@@ -79,6 +79,9 @@ else
   set clipboard=unnamed
 endif
 
+" Remove non-active fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
 " Automatically open, but do not go to (if there are errors) the quickfix /
 " location list window, or close it when is has become empty.
 autocmd QuickFixCmdPost [^l]* nested botright cwindow
