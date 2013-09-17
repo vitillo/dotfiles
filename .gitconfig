@@ -6,3 +6,5 @@
 	excludesfiles = ~/.gitignore
 	autocrlf = input
 	excludesfile = /home/vitillo/.gitignore
+[merge]
+	conflictstyle = diff3
