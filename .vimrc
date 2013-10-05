@@ -218,7 +218,6 @@ Bundle 'xolox/vim-session'
 
 " Slimv ocnfiguration
 let g:slimv_leader = "\\"
-let g:scheme_builtin_swank = 1
 let g:slimv_repl_split = 2
 
 " Vimux configuration
