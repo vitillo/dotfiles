@@ -40,7 +40,7 @@ set nowrap
 set nostartofline
 
 " Show trailing whitespace
-set listchars=tab:\ \ ,trail:◇,extends:»,precedes:«
+set listchars=tab:\ \ ,trail:◦,extends:»,precedes:«
 set list
 
 set tags=./tags;
@@ -138,7 +138,7 @@ imap <PageDown> <C-O><C-D>
 "
 " the first quote will autoclose so you'll get 'foo' and hitting <c-a> will
 " put the cursor right after the quote
-imap <C-a> <esc>wa
+imap <C-a> <esc>ea
 
 " Leader keymappings
 let mapleader = ","
@@ -210,10 +210,16 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'vitillo/slimv'
 Bundle 'vitillo/vim-colors-solarized'
 Bundle 'vitillo/vimux'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+
+" Slimv ocnfiguration
+let g:slimv_leader = "\\"
+let g:scheme_builtin_swank = 1
+let g:slimv_repl_split = 2
 
 " Vimux configuration
 nmap <leader>vp :VimuxPromptCommand<CR>
