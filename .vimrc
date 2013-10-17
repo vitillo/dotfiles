@@ -220,6 +220,9 @@ Bundle 'vitillo/vimux'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 
+" fireplace configuration
+nmap <leader>fe :%Eval<CR>
+
 " Rainbow configuration
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
