@@ -187,6 +187,7 @@ call pathogen#infect()
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+"Bundle 'vitillo/slimv'
 Bundle "maxbrunsfeld/vim-yankstack"
 Bundle "pangloss/vim-javascript"
 Bundle "tpope/vim-repeat"
@@ -198,23 +199,32 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'gcmt/taboo.vim'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
+Bundle 'guns/vim-clojure-static'
 Bundle 'kien/ctrlp.vim'
+Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mbbill/undotree'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
-Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'vitillo/slimv'
+Bundle 'vitillo/paredit.vim'
 Bundle 'vitillo/vim-colors-solarized'
 Bundle 'vitillo/vimux'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+
+" Rainbow configuration
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " Slimv ocnfiguration
 let g:slimv_leader = "\\"
