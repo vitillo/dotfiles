@@ -55,7 +55,7 @@ set backupdir^=~/.vim/_backup//    " where to put backup files.
 set directory^=~/.vim/_temp//      " where to put swap files.
 
 if v:version > 702
-  set relativenumber
+  "set relativenumber
   set undofile
 endif
 
@@ -69,14 +69,16 @@ endif
 autocmd VimResized * wincmd =
 
 " Yank text to the clipboard
-if has("unix")
-  if system("uname") == "Linux\n"
-    set clipboard=unnamedplus
+if $TMUX == ''
+  if has("unix")
+    if system("uname") == "Linux\n"
+      set clipboard=unnamedplus
+    else
+      set clipboard=unnamed
+    endif
   else
     set clipboard=unnamed
   endif
-else
-  set clipboard=unnamed
 endif
 
 " Remove non-active fugitive buffers
@@ -201,7 +203,7 @@ Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'guns/vim-clojure-static'
 Bundle 'kien/ctrlp.vim'
-Bundle 'kien/rainbow_parentheses.vim'
+"Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mbbill/undotree'
 Bundle 'mileszs/ack.vim'
@@ -221,13 +223,13 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 
 " fireplace configuration
-nmap <leader>fe :%Eval<CR>
+nmap cqf :%Eval<CR>
 
 " Rainbow configuration
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+"au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
 
 " Slimv ocnfiguration
 let g:slimv_leader = "\\"
