@@ -44,7 +44,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bi
 unset  SSH_ASKPASS
 unsetopt histverify
 
-perl -E ' print "\e[?1005h\e[?1002h" ' # needed for mouse support in mosh
+#perl -E ' print "\e[?1005h\e[?1002h" ' # needed for mouse support in mosh
 
 # Used to persistently attach a tmux session over ssh
 function rtmux {

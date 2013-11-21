@@ -223,7 +223,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 
 " fireplace configuration
-nmap cqf :%Eval<CR>
+nmap cqr :Require<CR>
 
 " Rainbow configuration
 let g:rbpt_colorpairs = [
@@ -355,7 +355,7 @@ au BufNewFile,BufRead *.upc setlocal ft=c cindent shiftwidth=2
 " Python
 " ------
 " make Python follow PEP8 for whitespace ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4
+au FileType python setlocal expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " HTML
 " ----
