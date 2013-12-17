@@ -4,3 +4,6 @@ merge = vimdiff
 [merge-tools]
 vimdiff.executable = vim
 vimdiff.args = -d $base $local $output $other +close +close
+
+[paths]
+try = ssh://hg.mozilla.org/try
