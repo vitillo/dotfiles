@@ -1,4 +1,4 @@
-install: install-vim install-git install-awesome install-tmux install-zsh install-ssh
+install: install-vim install-git install-hg install-awesome install-tmux install-zsh install-ssh
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc
@@ -12,6 +12,9 @@ install-zsh:
 install-git:
 	-ln -si $(PWD)/.gitconfig ~/.gitconfig
 	-ln -si $(PWD)/.gitignore ~/.gitignore
+
+install-hg:
+	-ln -si $(PWD)/.hgrc ~/.hgrc
 
 install-awesome:
 	-ln -si $(PWD)/.wallpaper.png ~/.wallpaper.png
