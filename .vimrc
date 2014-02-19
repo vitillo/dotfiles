@@ -221,6 +221,7 @@ Bundle 'vitillo/vim-colors-solarized'
 Bundle 'vitillo/vimux'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+Bundle 'chrisbra/csv.vim'
 
 " fireplace configuration
 nmap cqr :Require<CR>
