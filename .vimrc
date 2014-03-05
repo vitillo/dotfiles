@@ -223,6 +223,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'chrisbra/csv.vim'
 Bundle 'vim-scripts/LargeFile'
+Bundle 'saltstack/salt-vim'
 
 " fireplace configuration
 nmap cqr :Require<CR>
