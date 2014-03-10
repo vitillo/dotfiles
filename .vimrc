@@ -224,6 +224,7 @@ Bundle 'xolox/vim-session'
 Bundle 'chrisbra/csv.vim'
 Bundle 'vim-scripts/LargeFile'
 Bundle 'saltstack/salt-vim'
+Bundle 'othree/html5.vim'
 
 " fireplace configuration
 nmap cqr :Require<CR>
