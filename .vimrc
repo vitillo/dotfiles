@@ -151,6 +151,7 @@ nnoremap <leader>e :CtrlPBuffer<CR>
 nnoremap <leader>g :Gstatus<CR>
 nnoremap <leader>s :silent Ggrep 
 nnoremap <leader>q :cclose<CR> :lclose<CR>
+nnoremap <leader>d :Dash<CR>
 
 " Use numbers to pick the tab you want
 nmap <leader>1 :tabn 1<cr>
@@ -226,6 +227,8 @@ Bundle 'vitillo/vim-colors-solarized'
 Bundle 'vitillo/vimux'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " fireplace configuration
 nmap cqr :Require<CR>
