@@ -1,3 +1,6 @@
+[alias]
+blame = annotate --user --number
+
 [ui]
 username = Roberto A. Vitillo <rvitillo@mozilla.com>
 
