@@ -111,9 +111,6 @@ nnoremap <F3> :OpenSession<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Use very magic regexps
-cnoremap s/ s/\v
-
 " Better mark jumping (line + col)
 nnoremap ' `
 
@@ -342,6 +339,9 @@ let g:airline_left_sep='›'
 let g:airline_right_sep='‹'
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#whitespace#checks = [ 'trailing' ]
+
+" Clojure
+let g:ycm_filetype_blacklist = {'clojure': 0}
 
 " ISPC
 au BufNewFile,BufRead *.ispc setlocal ft=cpp cindent shiftwidth=2
