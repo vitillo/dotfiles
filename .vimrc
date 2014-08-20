@@ -187,13 +187,14 @@ call pathogen#infect()
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-"Bundle 'vitillo/slimv'
+" Use tab to cycle through autocompletion options
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-g>u\<Tab>"
+
 Bundle "maxbrunsfeld/vim-yankstack"
 Bundle "pangloss/vim-javascript"
 Bundle "tpope/vim-repeat"
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Raimondi/delimitMate'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
 Bundle 'chrisbra/csv.vim'
 Bundle 'christoomey/vim-tmux-navigator'
@@ -227,6 +228,8 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'othree/vim-autocomplpop'
+Bundle 'vim-scripts/L9'
 
 " fireplace configuration
 nmap cqr :Require<CR>
@@ -255,10 +258,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
-
-" Slimv ocnfiguration
-let g:slimv_leader = "\\"
-let g:slimv_repl_split = 2
 
 " Vimux configuration
 nmap <leader>vp :VimuxPromptCommand<CR>
