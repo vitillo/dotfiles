@@ -342,6 +342,15 @@ let g:airline#extensions#whitespace#checks = [ 'trailing' ]
 " Clojure
 let g:ycm_filetype_blacklist = {'clojure': 0}
 
+" Vim-clojure-static: Correctly indent compojure and korma macros, etc.
+let g:clojure_fuzzy_indent_patterns = "with.*,def.*,let.*,send.*,if.*,when.*artition"
+let g:clojure_fuzzy_indent_patterns .= ",GET,POST,PUT,PATCH,DELETE,context"          " Compojure
+let g:clojure_fuzzy_indent_patterns .= ",clone-for"                                  " Enlive
+let g:clojure_fuzzy_indent_patterns .= ",select.*,insert.*,update.*,delete.*,with.*" " Korma
+let g:clojure_fuzzy_indent_patterns .= ",fact,facts"                                 " Midje
+let g:clojure_fuzzy_indent_patterns .= ",up,down,alter,table"                        " Lobos
+let g:clojure_fuzzy_indent_patterns .= ",check,match,url-of-form"                    " Misc
+
 " ISPC
 au BufNewFile,BufRead *.ispc setlocal ft=cpp cindent shiftwidth=2
 
