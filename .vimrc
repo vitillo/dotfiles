@@ -228,8 +228,17 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
-Bundle 'othree/vim-autocomplpop'
-Bundle 'vim-scripts/L9'
+Bundle 'Shougo/neocomplcache.vim'
+
+" Neocomplcache configuration
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_force_overwrite_completefunc = 1
+
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+
+let g:neocomplcache_omni_patterns['clojure'] = '\w\|-\|\.\|+\|*\|/'
 
 " fireplace configuration
 nmap cqr :Require<CR>
