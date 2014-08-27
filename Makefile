@@ -1,4 +1,4 @@
-install: install-vim install-git install-hg install-awesome install-tmux install-zsh install-ssh
+install: install-vim install-git install-hg install-awesome install-tmux install-zsh install-ssh install-emacs
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc
@@ -30,3 +30,6 @@ install-tmux:
 install-ssh:
 	mkdir -p ~/.ssh
 	-ln -si $(PWD)/ssh_config ~/.ssh/config
+
+install-emacs:
+	-ln -si $(PWD)/.live-packs ~/.live-packs
