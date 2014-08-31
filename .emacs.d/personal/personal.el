@@ -1,7 +1,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Install custom packages
-(prelude-require-packages '(guide-key
+(prelude-require-packages '(json-mode
+                            gist
+                            markdown-mode
+                            guide-key
                             popwin
                             window-number
                             solarized-theme
@@ -13,6 +16,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
+
+;; Enable uniquify
+(require 'uniquify)
 
 ;; Shell-mode settings
 (unless (eq system-type 'windows-nt)
