@@ -32,4 +32,5 @@ install-ssh:
 	-ln -si $(PWD)/ssh_config ~/.ssh/config
 
 install-emacs:
-	-ln -si $(PWD)/.live-packs ~/.live-packs
+	rm -rf ~/.emacs.d/personal
+	-ln -si $(PWD)/.emacs.d/personal ~/.emacs.d/personal
