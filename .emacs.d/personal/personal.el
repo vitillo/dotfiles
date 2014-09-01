@@ -12,7 +12,8 @@
 			    elscreen
 			    win-switch
 			    powerline
-			    evil-leader))
+			    evil-leader
+                            evil-tabs))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
@@ -160,22 +161,27 @@
 (elscreen-start)
 
 ;; Change prefix key
-(setq elscreen-prefix-key "\C-a")
+(setq elscreen-prefix-key "\C-q")
 
 ;; Disable tabs display
 (setq elscreen-display-tab nil)
+
+;; Vim-like tab navigation
+(global-evil-tabs-mode t)
 
 ;; Put tabs display in your frame title bar instead.
 (defun elscreen-frame-title-update ()
   (when (elscreen-screen-modified-p 'elscreen-frame-title-update)
     (let* ((screen-list (sort (elscreen-get-screen-list) '<))
-           (screen-to-name-alist (elscreen-get-screen-to-name-alist))
            (title (concat "| " (mapconcat
-                   (lambda (screen)
-                     (format "%d%s %s |"
-                             screen (elscreen-status-label screen)
-                             (get-alist screen screen-to-name-alist)))
-                   screen-list " "))))
+                                (lambda (screen)
+                                  (let* ((label (elscreen-status-label screen))
+                                         (label (if (string= label "+") label "")))
+                                   (format "%s%d%s |"
+                                          label
+                                          screen
+                                          label)))
+                                screen-list " "))))
       (if (fboundp 'set-frame-name)
           (set-frame-name title)
         (setq frame-title-format title)))))
@@ -407,22 +413,31 @@ middle"
 ;; Use soft tabs
 (setq indent-tabs-mode nil)
 
+;; Python
+(add-hook 'python-mode-hook (lambda ()
+			      (subword-mode -1) ; prelude is so kind to enable subword-mode...
+			      (modify-syntax-entry ?_ "w")
+			      (modify-syntax-entry ?. "w")))
+
 ;; C/C++
 (setq-default c-basic-offset 2)
-(add-hook 'c-mode-common-hook #'(lambda ()  (modify-syntax-entry ?_ "w")))
+
+(add-hook 'c-mode-common-hook (lambda ()
+				(subword-mode -1)
+				(modify-syntax-entry ?_ "w")))
 
 ;;Javascript
 (require 'js)
 (setq js-indent-level 2)
 
 ;; Emacs Lisp
-(dolist (c (string-to-list ":_-*'"))
-  (modify-syntax-entry c "w" emacs-lisp-mode-syntax-table))
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+				  (subword-mode -1)
+                                  (dolist (c (string-to-list ":_-?!#*/>'"))
+                                    (modify-syntax-entry c "w"))))
 
 ;; Clojure
-
-(dolist (c (string-to-list ":_-?!#*/>"))
-  (modify-syntax-entry c "w" clojure-mode-syntax-table))
-
-; For some reason simply changing the syntax table is not sufficient for hyphens
-(add-hook 'clojure-mode-hook 'superword-mode)
+(add-hook 'clojure-mode-hook (lambda ()
+                               (subword-mode -1)
+                               (dolist (c (string-to-list ":_-?!#*/>'"))
+                                 (modify-syntax-entry c "w"))))
