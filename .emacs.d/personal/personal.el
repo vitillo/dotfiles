@@ -1,7 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Install custom packages
-(prelude-require-packages '(json-mode
+(prelude-require-packages '(nav
+                            json-mode
                             gist
                             markdown-mode
                             guide-key
@@ -94,6 +95,12 @@
 (setq x-underline-at-descent-line t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Nav configuration
+(require 'nav)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Guide-key configuration
 (require 'guide-key)
 (setq guide-key/guide-key-sequence '("C-c" "C-x"))
