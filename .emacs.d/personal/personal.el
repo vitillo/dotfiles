@@ -1,8 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Install custom packages
-(prelude-require-packages '(neotree
-                            json-mode
+(prelude-require-packages '(json-mode
                             gist
                             markdown-mode
                             guide-key
@@ -93,16 +92,6 @@
   (setq solarized-emphasize-indicators nil))
 
 (setq x-underline-at-descent-line t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Neotree configuration
-(add-hook 'neotree-mode-hook
-          (lambda ()
-            (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-            (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
-            (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Guide-key configuration
@@ -230,7 +219,7 @@
 (evil-leader/set-key
   "q" 'delete-window
   "u" 'undo-tree-visualize
-  "o" 'neotree-toggle)
+  "o" 'nav-toggle)
 
 ;; Set indentation level
 (setq evil-shift-width 2)
