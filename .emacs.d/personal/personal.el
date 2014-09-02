@@ -233,9 +233,6 @@
 ;; Set indentation level
 (setq evil-shift-width 2)
 
-;; Indent on new line in insert mode
-(define-key evil-insert-state-map (kbd "RET") 'evil-ret-and-indent)
-
 ;; Redefine key to enter the command line
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 
