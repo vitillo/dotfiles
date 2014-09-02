@@ -1,7 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Install custom packages
-(prelude-require-packages '(json-mode
+(prelude-require-packages '(neotree
+                            json-mode
                             gist
                             markdown-mode
                             guide-key
@@ -52,15 +53,6 @@
 (when (member "Inconsolata" (font-family-list))
   (set-face-attribute 'default nil :font "Inconsolata-14"))
 
-;; show column number and line number
-;(dolist (mode '(column-number-mode line-number-mode))
-;  (when (fboundp mode) (funcall mode t)))
-
-;(dolist (mode-hook '(text-mode-hook prog-mode-hook))
-;  (add-hook mode-hook
-;            (lambda ()
-;              (linum-mode 1))))
-
 ;; make the fringe thinner (default is 8 in pixels)
 (fringe-mode 4)
 
@@ -104,6 +96,15 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Neotree configuration
+(add-hook 'neotree-mode-hook
+          (lambda ()
+            (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+            (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+            (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Guide-key configuration
 (require 'guide-key)
 (setq guide-key/guide-key-sequence '("C-c" "C-x"))
@@ -228,7 +229,8 @@
 (evil-leader/set-leader ",")
 (evil-leader/set-key
   "q" 'delete-window
-  "u" 'undo-tree-visualize)
+  "u" 'undo-tree-visualize
+  "o" 'neotree-toggle)
 
 ;; Set indentation level
 (setq evil-shift-width 2)
@@ -430,11 +432,11 @@ middle"
 ;; Emacs Lisp
 (add-hook 'emacs-lisp-mode-hook (lambda ()
 				  (subword-mode -1)
-                                  (dolist (c (string-to-list ":_-?!#*/>'"))
+                                  (dolist (c (string-to-list ":_-?!#*/>"))
                                     (modify-syntax-entry c "w"))))
 
 ;; Clojure
 (add-hook 'clojure-mode-hook (lambda ()
                                (subword-mode -1)
-                               (dolist (c (string-to-list ":_-?!#*/>'"))
+                               (dolist (c (string-to-list ":_-?!#*/>"))
                                  (modify-syntax-entry c "w"))))
