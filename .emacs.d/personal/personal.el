@@ -170,10 +170,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Elscreen configuration
-(elscreen-start)
 
 ;; Change prefix key
-(setq elscreen-prefix-key "\C-q")
+(setq elscreen-prefix-key (kbd "C-'"))
+
+(elscreen-start)
 
 ;; Disable tabs display
 (setq elscreen-display-tab nil)
@@ -391,7 +392,6 @@ middle"
 (define-key my-keys-minor-mode-map (kbd "M-o") 'switch-window)
 (define-key my-keys-minor-mode-map (kbd "C-=") 'elscreen-next)
 (define-key my-keys-minor-mode-map (kbd "C--") 'elscreen-previous)
-(define-key my-keys-minor-mode-map (kbd "M-t") 'elscreen-create)
 (define-key my-keys-minor-mode-map (kbd "C-M-<up>") 'win-resize-minimize-vert)
 (define-key my-keys-minor-mode-map (kbd "C-M-<down>") 'win-resize-enlarge-vert)
 (define-key my-keys-minor-mode-map (kbd "C-M-<left>") 'win-resize-minimize-horiz)
