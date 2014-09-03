@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Install custom packages
-(prelude-require-packages '(nav
+(prelude-require-packages '(neotree
                             json-mode
                             gist
                             markdown-mode
@@ -13,8 +13,7 @@
 			    elscreen
 			    win-switch
 			    powerline
-			    evil-leader
-                            evil-tabs))
+			    evil-leader))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
@@ -96,8 +95,24 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Nav configuration
-(require 'nav)
+;; Neotree configuration
+(require 'neotree)
+
+;; Hack to make neotree play ball with popwin
+;; https://github.com/jaypei/emacs-neotree/issues/50#issuecomment-54249309
+(when neo-persist-show
+  (add-hook 'popwin:before-popup-hook
+            (lambda () (setq neo-persist-show nil)))
+  (add-hook 'popwin:after-popup-hook
+            (lambda () (setq neo-persist-show t))))
+
+;; Redefine keybinding for evil
+(add-hook 'neotree-mode-hook
+          (lambda ()
+            (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+            (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+            (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -163,9 +178,6 @@
 ;; Disable tabs display
 (setq elscreen-display-tab nil)
 
-;; Vim-like tab navigation
-(global-evil-tabs-mode t)
-
 ;; Put tabs display in your frame title bar instead.
 (defun elscreen-frame-title-update ()
   (when (elscreen-screen-modified-p 'elscreen-frame-title-update)
@@ -226,10 +238,13 @@
 (evil-leader/set-key
   "q" 'delete-window
   "u" 'undo-tree-visualize
-  "o" 'nav-toggle)
+  "o" 'neotree-toggle)
 
 ;; Set indentation level
 (setq evil-shift-width 2)
+
+;; Indent on new line in insert mode
+;(define-key evil-insert-state-map (kbd "RET") 'evil-ret-and-indent)
 
 ;; Redefine key to enter the command line
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
