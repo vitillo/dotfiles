@@ -32,5 +32,6 @@ install-ssh:
 	-ln -si $(PWD)/ssh_config ~/.ssh/config
 
 install-emacs:
-	rm -rf ~/.emacs.d/personal
-	-ln -si $(PWD)/.emacs.d/personal ~/.emacs.d/personal
+	rm -rf ~/.emacs.d
+	mkdir ~/.emacs.d
+	-ln -si $(PWD)/.emacs.d/init.el ~/.emacs.d/init.el

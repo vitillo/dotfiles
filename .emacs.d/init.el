@@ -1,22 +1,58 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Install custom packages
-(prelude-require-packages '(neotree
-                            json-mode
-                            gist
-                            markdown-mode
-                            guide-key
-                            popwin
-                            window-number
-                            solarized-theme
-			    multi-term
-			    elscreen
-			    win-switch
-			    powerline
-			    evil-leader))
+
+
+(require 'package)
+(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
+			 ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+(package-initialize)
+(package-refresh-contents)
+
+
+(defvar my-packages '(cider
+		       company
+		       elisp-slime-nav
+		       exec-path-from-shell
+		       flycheck
+		       ace-jump-mode
+		       magit
+		       smartparens
+		       helm
+		       neotree
+		       json-mode
+		       gist
+		       markdown-mode
+		       guide-key
+		       popwin
+		       window-number
+		       solarized-theme
+		       zenburn-theme
+		       multi-term
+		       elscreen
+		       win-switch
+		       powerline
+		       projectile
+		       evil
+		       surround
+		       evil-leader
+		       evil-visualstar))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General settings
+
+;; On OS X Emacs doesn't use the shell PATH if it's not started from
+;; the shell. Let's fix that:
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
+;; Disable splash screen
+(setq inhibit-startup-message t)
 
 ;; Enable uniquify
 (require 'uniquify)
@@ -70,6 +106,13 @@
 
 ;; Disable bell
 (setq ring-bell-function 'ignore)
+
+;; Enable whitespace-mode
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face tabs empty trailing lines-tail))
+(global-whitespace-mode +1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Switch command and alt key on OSX
@@ -79,19 +122,31 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Use solaraized color theme
-(when (display-graphic-p)
-  (load-theme 'solarized-dark t)
-  (setq solarized-distinct-fringe-background t)
-  ;; make the modeline high contrast
-  (setq solarized-high-contrast-mode-line t)
-  ;; Use less bolding
-  (setq solarized-use-less-bold t)
-  ;; Use more italics
-  (setq solarized-use-more-italic t)
-  ;; Use less colors for indicators such as git:gutter, flycheck and similar.
-  (setq solarized-emphasize-indicators nil))
+(if (display-graphic-p)
+  (progn
+    (load-theme 'solarized-dark t)
+    (setq solarized-distinct-fringe-background t)
+    ;; make the modeline high contrast)
+    (setq solarized-high-contrast-mode-line t)
+    ;; Use less bolding
+    (setq solarized-use-less-bold t)
+    ;; Use more italics
+    (setq solarized-use-more-italic t)
+    ;; Use less colors for indicators such as git:gutter, flycheck and similar.
+    (setq solarized-emphasize-indicators nil))
+  (load-theme 'zenburn t))
 
 (setq x-underline-at-descent-line t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Smartparens configuration
+(smartparens-global-strict-mode +1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Flycheck configuration
+(global-flycheck-mode +1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -201,7 +256,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Projectile configuration
+;; PROJECTILEk configuration
 ; seems to be causing some issues and not loading correctly the files
 ;(setq projectile-enable-caching t)
 
@@ -219,7 +274,9 @@
 
 ;; Cider configuration
 (require 'cider)
+
 (setq cider-show-error-buffer nil)
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -254,10 +311,8 @@
 (add-hook 'eshell-mode-hook 'evil-emacs-state)
 (add-hook 'term-mode-hook 'evil-emacs-state)
 (add-hook 'cider-repl-mode-hook 'evil-emacs-state)
-(add-hook 'term-mode-hook (lambda () (yas-minor-mode -1)))
 
 ;; C-g as general purpose escape key sequence for evil.
-;;
 (defun my-esc (prompt)
   "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
   (cond
@@ -274,6 +329,24 @@
 ;; Works around the fact that Evil uses read-event directly when in operator state, which
 ;; doesn't use the key-translation-map.
 (define-key evil-operator-state-map (kbd "C-g") 'keyboard-quit)
+
+;; Enable evil-surround
+(require 'surround)
+(global-surround-mode 1)
+
+;; Magit from avsej
+(evil-add-hjkl-bindings magit-log-mode-map 'emacs)
+(evil-add-hjkl-bindings magit-commit-mode-map 'emacs)
+(evil-add-hjkl-bindings magit-branch-manager-mode-map 'emacs
+  "K" 'magit-discard-item
+  "L" 'magit-key-mode-popup-logging)
+(evil-add-hjkl-bindings magit-status-mode-map 'emacs
+  "K" 'magit-discard-item
+  "l" 'magit-key-mode-popup-logging
+  "h" 'magit-toggle-diff-refine-hunk)
+
+;; Enable ace-jump mode with evil-mode
+(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -368,7 +441,7 @@ middle"
         ("*cider-src*" :height 20)
         ("*cider-result*" :height 20)
         ("*cider-macroexpansion*" :height 20)
-        ("\\*cider-repl.*" :regexp t :height 20)
+        ("\\*cider-repl.*" :regexp t :height 20 :stick t)
         ("*Kill Ring*" :height 20)
         ("*Compile-Log*" :height 20 :stick t)))
 
@@ -377,6 +450,11 @@ middle"
 ;; Powerline configuration
 (require 'powerline)
 (powerline-default-theme)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Company mode configuration
+(global-company-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -408,7 +486,6 @@ middle"
 (define-key my-keys-minor-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (define-key my-keys-minor-mode-map (kbd "C-\\") 'helm-buffers-list)
 (define-key my-keys-minor-mode-map (kbd "C-c t") 'multi-term-next)
-(define-key my-keys-minor-mode-map (kbd "C-c b") 'prelude-switch-to-previous-buffer)
 
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
@@ -425,7 +502,6 @@ middle"
 
 ;; Python
 (add-hook 'python-mode-hook (lambda ()
-			      (subword-mode -1) ; prelude is so kind to enable subword-mode...
 			      (modify-syntax-entry ?_ "w")
 			      (modify-syntax-entry ?. "w")))
 
@@ -433,7 +509,6 @@ middle"
 (setq-default c-basic-offset 2)
 
 (add-hook 'c-mode-common-hook (lambda ()
-				(subword-mode -1)
 				(modify-syntax-entry ?_ "w")))
 
 ;;Javascript
@@ -442,12 +517,26 @@ middle"
 
 ;; Emacs Lisp
 (add-hook 'emacs-lisp-mode-hook (lambda ()
-				  (subword-mode -1)
                                   (dolist (c (string-to-list ":_-?!#*/>"))
                                     (modify-syntax-entry c "w"))))
 
 ;; Clojure
 (add-hook 'clojure-mode-hook (lambda ()
-                               (subword-mode -1)
                                (dolist (c (string-to-list ":_-?!#*/>"))
                                  (modify-syntax-entry c "w"))))
+
+;; Emacs Lisp
+(define-key emacs-lisp-mode-map (kbd "C-c C-c") 'eval-defun)
+(define-key emacs-lisp-mode-map (kbd "C-c C-b") 'eval-buffer)
+
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (turn-on-eldoc-mode)
+				  (setq mode-name "EL")))
+
+(add-hook 'ielm-mode-hook (lambda ()
+                            (run-hooks 'prelude-interactive-lisp-coding-hook)
+			    (turn-on-eldoc-mode)))
+
+;; enable elisp-slime-nav-mode
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+  (add-hook hook 'elisp-slime-nav-mode))
