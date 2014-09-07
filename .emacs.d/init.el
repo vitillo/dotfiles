@@ -8,8 +8,9 @@
 			 ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (package-initialize)
-(package-refresh-contents)
 
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 (defvar my-packages '(cider
 		       company
@@ -184,7 +185,7 @@
 (require 'multi-term)
 
 (setq multi-term-program "/bin/zsh")
-(global-set-key "\C-x\C-s" '(lambda ()(interactive)(multi-term)))
+(global-set-key "\C-c\C-s" '(lambda ()(interactive)(multi-term)))
 
 ;; Forward navigation keys to the shell
 (setq term-bind-key-alist
@@ -348,6 +349,9 @@
 ;; Enable ace-jump mode with evil-mode
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
 
+;; Remap 0 to ^
+(define-key evil-motion-state-map "0" #'evil-first-non-blank-of-visual-line)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Win-switch configuration
@@ -486,6 +490,7 @@ middle"
 (define-key my-keys-minor-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (define-key my-keys-minor-mode-map (kbd "C-\\") 'helm-buffers-list)
 (define-key my-keys-minor-mode-map (kbd "C-c t") 'multi-term-next)
+(define-key my-keys-minor-mode-map (kbd "C-x g") 'magit-status)
 
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
