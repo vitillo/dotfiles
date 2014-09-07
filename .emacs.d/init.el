@@ -185,7 +185,7 @@
 (require 'multi-term)
 
 (setq multi-term-program "/bin/zsh")
-(global-set-key "\C-c\C-s" '(lambda ()(interactive)(multi-term)))
+(global-set-key (kbd "C-x M-m") '(lambda ()(interactive)(multi-term)))
 
 ;; Forward navigation keys to the shell
 (setq term-bind-key-alist
@@ -257,9 +257,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; PROJECTILEk configuration
-; seems to be causing some issues and not loading correctly the files
-;(setq projectile-enable-caching t)
+;; Projectile configuration
+(projectile-global-mode)
+
+;; seems to be causing some issues and not loading correctly the files
+;; (setq projectile-enable-caching t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -489,7 +492,7 @@ middle"
 (define-key my-keys-minor-mode-map (kbd "C-x t") 'helm-elscreen)
 (define-key my-keys-minor-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (define-key my-keys-minor-mode-map (kbd "C-\\") 'helm-buffers-list)
-(define-key my-keys-minor-mode-map (kbd "C-c t") 'multi-term-next)
+(define-key my-keys-minor-mode-map (kbd "C-x m") 'multi-term-next)
 (define-key my-keys-minor-mode-map (kbd "C-x g") 'magit-status)
 
 (define-minor-mode my-keys-minor-mode
