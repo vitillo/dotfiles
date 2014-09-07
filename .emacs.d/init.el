@@ -360,69 +360,12 @@
 ;; Win-switch configuration
 (win-switch-mode)
 
-;; Window resize function
-(defun win-resize-top-or-bot ()
-  "figure out if the current window is on top, bottom or in the
-middle"
-  (let* ((win-edges (window-edges))
-	 (this-window-y-min (nth 1 win-edges))
-	 (this-window-y-max (nth 3 win-edges))
-	 (fr-height (frame-height)))
-    (cond
-     ((eq 0 this-window-y-min) "top")
-     ((eq (- fr-height 1) this-window-y-max) "bot")
-     (t "mid"))))
-
-(defun win-resize-left-or-right ()
-  "figure out if the current window is to the left, right or in the
-middle"
-  (let* ((win-edges (window-edges))
-	 (this-window-x-min (nth 0 win-edges))
-	 (this-window-x-max (nth 2 win-edges))
-	 (fr-width (frame-width)))
-    (cond
-     ((eq 0 this-window-x-min) "left")
-     ((eq (+ fr-width 4) this-window-x-max) "right")
-     (t "mid"))))
-
-(defun win-resize-enlarge-horiz ()
-  (interactive)
-  (cond
-   ((equal "top" (win-resize-top-or-bot)) (enlarge-window -5))
-   ((equal "bot" (win-resize-top-or-bot)) (enlarge-window 5))
-   ((equal "mid" (win-resize-top-or-bot)) (enlarge-window -5))
-   (t (message "nil"))))
-
-(defun win-resize-minimize-horiz ()
-  (interactive)
-  (cond
-   ((equal "top" (win-resize-top-or-bot)) (enlarge-window 5))
-   ((equal "bot" (win-resize-top-or-bot)) (enlarge-window -5))
-   ((equal "mid" (win-resize-top-or-bot)) (enlarge-window 5))
-   (t (message "nil"))))
-
-(defun win-resize-enlarge-vert ()
-  (interactive)
-  (cond
-   ((equal "left" (win-resize-left-or-right)) (enlarge-window-horizontally -5))
-   ((equal "right" (win-resize-left-or-right)) (enlarge-window-horizontally 5))
-   ((equal "mid" (win-resize-left-or-right)) (enlarge-window-horizontally -5))))
-
-(defun win-resize-minimize-vert ()
-  (interactive)
-  (cond
-   ((equal "left" (win-resize-left-or-right)) (enlarge-window-horizontally 5))
-   ((equal "right" (win-resize-left-or-right)) (enlarge-window-horizontally -5))
-   ((equal "mid" (win-resize-left-or-right)) (enlarge-window-horizontally 5))))
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Popwin configuration
 (require 'popwin)
 
 (popwin-mode 1)
-;(push '("*" :regexp t :height 30) popwin:special-display-config)
 
 (setq popwin:special-display-config
       '(("*Help*" :height 20)
@@ -477,14 +420,10 @@ middle"
 (define-key my-keys-minor-mode-map (kbd "M-o") 'switch-window)
 (define-key my-keys-minor-mode-map (kbd "C-=") 'elscreen-next)
 (define-key my-keys-minor-mode-map (kbd "C--") 'elscreen-previous)
-(define-key my-keys-minor-mode-map (kbd "C-M-<up>") 'win-resize-minimize-vert)
-(define-key my-keys-minor-mode-map (kbd "C-M-<down>") 'win-resize-enlarge-vert)
-(define-key my-keys-minor-mode-map (kbd "C-M-<left>") 'win-resize-minimize-horiz)
-(define-key my-keys-minor-mode-map (kbd "C-M-<right>") 'win-resize-enlarge-horiz)
-(define-key my-keys-minor-mode-map (kbd "C-M-<up>") 'win-resize-enlarge-horiz)
-(define-key my-keys-minor-mode-map (kbd "C-M-<down>") 'win-resize-minimize-horiz)
-(define-key my-keys-minor-mode-map (kbd "C-M-<left>") 'win-resize-enlarge-vert)
-(define-key my-keys-minor-mode-map (kbd "C-M-<right>") 'win-resize-minimize-vert)
+(define-key my-keys-minor-mode-map (kbd "M-J") (lambda () (interactive) (enlarge-window 5)))
+(define-key my-keys-minor-mode-map (kbd "M-K") (lambda () (interactive) (enlarge-window -5)))
+(define-key my-keys-minor-mode-map (kbd "M-H") (lambda () (interactive) (enlarge-window -5 t)))
+(define-key my-keys-minor-mode-map (kbd "M-L") (lambda () (interactive) (enlarge-window 5 t)))
 (define-key my-keys-minor-mode-map (kbd "M-x") 'helm-M-x)
 (define-key my-keys-minor-mode-map (kbd "C-x C-f") 'helm-find-files)
 (define-key my-keys-minor-mode-map (kbd "C-x c o") 'helm-occur)
