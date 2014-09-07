@@ -36,7 +36,7 @@
 		       powerline
 		       projectile
 		       evil
-		       surround
+		       evil-surround
 		       evil-leader
 		       evil-visualstar))
 
@@ -335,8 +335,8 @@
 (define-key evil-operator-state-map (kbd "C-g") 'keyboard-quit)
 
 ;; Enable evil-surround
-(require 'surround)
-(global-surround-mode 1)
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;; Magit from avsej
 (evil-add-hjkl-bindings magit-log-mode-map 'emacs)
