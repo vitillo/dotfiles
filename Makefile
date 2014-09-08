@@ -32,6 +32,7 @@ install-ssh:
 	-ln -si $(PWD)/ssh_config ~/.ssh/config
 
 install-emacs:
-	rm -rf ~/.emacs.d
-	mkdir ~/.emacs.d
+	mkdir -p ~/.emacs.d
+	mkdir -p ~/.lein
 	-ln -si $(PWD)/.emacs.d/init.el ~/.emacs.d/init.el
+	-ln -si $(PWD)/.lein/profiles.clj ~/.lein/profiles.clj

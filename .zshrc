@@ -53,3 +53,5 @@ function rtmux {
        *) autossh -M 0 $1 -t "if tmux -qu has -t $2; then tmux -qu attach -t $2; else EDITOR=vim tmux -qu new -s $2; fi";;
   esac
 }
+
+export TERM="xterm-256color"
