@@ -250,7 +250,7 @@
                                          (label (if (string= label "+") label "")))
                                    (format "%s%d%s |"
                                           label
-                                          screen
+                                          (+ 1 screen)
                                           label)))
                                 screen-list " "))))
       (if (fboundp 'set-frame-name)
@@ -423,8 +423,6 @@
 (define-key my-keys-minor-mode-map (kbd "M-k") 'win-switch-up)
 (define-key my-keys-minor-mode-map (kbd "M-j") 'win-switch-down)
 (define-key my-keys-minor-mode-map (kbd "M-o") 'switch-window)
-(define-key my-keys-minor-mode-map (kbd "C-=") 'elscreen-next)
-(define-key my-keys-minor-mode-map (kbd "C--") 'elscreen-previous)
 (define-key my-keys-minor-mode-map (kbd "M-J") (lambda () (interactive) (enlarge-window 5)))
 (define-key my-keys-minor-mode-map (kbd "M-K") (lambda () (interactive) (enlarge-window -5)))
 (define-key my-keys-minor-mode-map (kbd "M-H") (lambda () (interactive) (enlarge-window -5 t)))
@@ -434,10 +432,19 @@
 (define-key my-keys-minor-mode-map (kbd "C-x c o") 'helm-occur)
 (define-key my-keys-minor-mode-map (kbd "C-x C-b") 'helm-buffers-list)
 (define-key my-keys-minor-mode-map (kbd "C-x t") 'helm-elscreen)
-(define-key my-keys-minor-mode-map (kbd "M-y") 'helm-show-kill-ring)
-(define-key my-keys-minor-mode-map (kbd "C-\\") 'helm-buffers-list)
 (define-key my-keys-minor-mode-map (kbd "C-x m") 'multi-term-next)
 (define-key my-keys-minor-mode-map (kbd "C-x g") 'magit-status)
+(define-key my-keys-minor-mode-map (kbd "C-0") 'helm-buffers-list)
+(define-key my-keys-minor-mode-map (kbd "M-y") 'helm-show-kill-ring)
+(define-key my-keys-minor-mode-map (kbd "C-M-1") (lambda () (interactive) (elscreen-goto 0)))
+(define-key my-keys-minor-mode-map (kbd "C-M-2") (lambda () (interactive) (elscreen-goto 1)))
+(define-key my-keys-minor-mode-map (kbd "C-M-3") (lambda () (interactive) (elscreen-goto 2)))
+(define-key my-keys-minor-mode-map (kbd "C-M-4") (lambda () (interactive) (elscreen-goto 3)))
+(define-key my-keys-minor-mode-map (kbd "C-M-5") (lambda () (interactive) (elscreen-goto 4)))
+(define-key my-keys-minor-mode-map (kbd "C-M-6") (lambda () (interactive) (elscreen-goto 5)))
+(define-key my-keys-minor-mode-map (kbd "C-M-7") (lambda () (interactive) (elscreen-goto 6)))
+(define-key my-keys-minor-mode-map (kbd "C-M-8") (lambda () (interactive) (elscreen-goto 7)))
+(define-key my-keys-minor-mode-map (kbd "C-M-9") (lambda () (interactive) (elscreen-goto 8)))
 
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
