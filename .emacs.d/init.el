@@ -435,6 +435,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-x m") 'multi-term-next)
 (define-key my-keys-minor-mode-map (kbd "C-x g") 'magit-status)
 (define-key my-keys-minor-mode-map (kbd "C-@") 'helm-buffers-list)
+(define-key my-keys-minor-mode-map (kbd "C-SPC") 'helm-buffers-list)
 (define-key my-keys-minor-mode-map (kbd "M-y") 'helm-show-kill-ring)
 (define-key my-keys-minor-mode-map (kbd "C-c 1") (lambda () (interactive) (elscreen-goto 0)))
 (define-key my-keys-minor-mode-map (kbd "C-c 2") (lambda () (interactive) (elscreen-goto 1)))
