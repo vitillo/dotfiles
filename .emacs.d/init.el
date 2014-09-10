@@ -38,7 +38,8 @@
 		      evil
 		      evil-surround
 		      evil-leader
-		      evil-visualstar))
+		      evil-visualstar
+		      evil-jumper))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -340,10 +341,6 @@
 ;; doesn't use the key-translation-map.
 (define-key evil-operator-state-map (kbd "C-g") 'keyboard-quit)
 
-;; Enable evil-surround
-(require 'evil-surround)
-(global-evil-surround-mode 1)
-
 ;; Magit from avsej
 (evil-add-hjkl-bindings magit-log-mode-map 'emacs)
 (evil-add-hjkl-bindings magit-commit-mode-map 'emacs)
@@ -360,6 +357,13 @@
 
 ;; Remap 0 to ^
 (define-key evil-motion-state-map "0" #'evil-first-non-blank-of-visual-line)
+
+;; Enable evil-surround
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+
+;; Enable evil-jumper
+(require 'evil-jumper)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
