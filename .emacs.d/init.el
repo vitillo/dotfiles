@@ -2,10 +2,9 @@
 
 ;; Install custom packages
 
-
 (require 'package)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
-			 ("marmalade" . "http://marmalade-repo.org/packages/")))
+                         ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (package-initialize)
 
@@ -13,34 +12,34 @@
   (package-refresh-contents))
 
 (defvar my-packages '(cider
-		      company
-		      elisp-slime-nav
-		      exec-path-from-shell
-		      flycheck
-		      ace-jump-mode
-		      magit
-		      smartparens
-		      helm
-		      neotree
-		      json-mode
-		      gist
-		      markdown-mode
-		      guide-key
-		      popwin
-		      window-number
-		      cyberpunk-theme
-		      solarized-theme
-		      zenburn-theme
-		      multi-term
-		      elscreen
-		      win-switch
-		      smart-mode-line
-		      projectile
-		      evil
-		      evil-surround
-		      evil-leader
-		      evil-visualstar
-		      evil-jumper))
+                      company
+                      elisp-slime-nav
+                      exec-path-from-shell
+                      flycheck
+                      ace-jump-mode
+                      magit
+                      smartparens
+                      helm
+                      neotree
+                      json-mode
+                      gist
+                      markdown-mode
+                      guide-key
+                      popwin
+                      window-number
+                      cyberpunk-theme
+                      solarized-theme
+                      zenburn-theme
+                      multi-term
+                      elscreen
+                      win-switch
+                      smart-mode-line
+                      projectile
+                      evil
+                      evil-surround
+                      evil-leader
+                      evil-visualstar
+                      evil-jumper))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -464,7 +463,7 @@
 ;; Language specific settings
 
 ;; Use soft tabs
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Python
 (add-hook 'python-mode-hook (lambda ()
