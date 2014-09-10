@@ -28,6 +28,7 @@
 		      guide-key
 		      popwin
 		      window-number
+		      cyberpunk-theme
 		      solarized-theme
 		      zenburn-theme
 		      multi-term
@@ -106,7 +107,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" default)))
+ '(custom-safe-themes (quote ("f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" default)))
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(magit-use-overlays nil))
 
@@ -142,7 +143,7 @@
     (setq solarized-use-more-italic t)
     ;; Use less colors for indicators such as git:gutter, flycheck and similar.
     (setq solarized-emphasize-indicators nil))
-  (load-theme 'zenburn t))
+  (load-theme 'cyberpunk t))
 
 (setq x-underline-at-descent-line t)
 
