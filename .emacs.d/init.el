@@ -150,6 +150,8 @@
 
 ;; Smartparens configuration
 (smartparens-global-strict-mode +1)
+(setq sp-autoescape-string-quote nil)
+(sp-pair "'" nil :actions :rem)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
