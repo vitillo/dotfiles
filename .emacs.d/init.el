@@ -143,7 +143,7 @@
     (setq solarized-use-more-italic t)
     ;; Use less colors for indicators such as git:gutter, flycheck and similar.
     (setq solarized-emphasize-indicators nil))
-  (load-theme 'cyberpunk t))
+  (load-theme 'zenburn t))
 
 (setq x-underline-at-descent-line t)
 
