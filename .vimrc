@@ -229,6 +229,7 @@ Bundle 'xolox/vim-session'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'Shougo/neocomplcache.vim'
+Bundle 'jnurmine/Zenburn'
 
 " Neocomplcache configuration
 let g:neocomplcache_enable_at_startup = 1
@@ -291,13 +292,17 @@ let g:yankstack_map_keys = 0
 nmap <leader>j <Plug>yankstack_substitute_newer_paste
 nmap <leader>k <Plug>yankstack_substitute_older_paste
 
-" solarized configuration
-set background=dark
-set t_Co=16
-let g:solarized_termtrans = 1
-let g:solarized_termcolors = 16
-let g:solarized_contrast = "high"
-colorscheme solarized
+if has('gui_running')
+	" solarized configuration
+	set background=dark
+	set t_Co=16
+	let g:solarized_termtrans = 1
+	let g:solarized_termcolors = 16
+	let g:solarized_contrast = "high"
+	colorscheme solarized
+else
+	colors zenburn
+endif
 
 " tagbar configuration
 let g:tagbar_sort = 0
