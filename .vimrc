@@ -347,7 +347,7 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " airline configuration
-let g:airline_theme='solarized'
+" let g:airline_theme='solarized'
 let g:airline_left_sep='›'
 let g:airline_right_sep='‹'
 let g:airline#extensions#tagbar#enabled = 0
