@@ -13,6 +13,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(cider
+                      jedi
                       company
                       elisp-slime-nav
                       exec-path-from-shell
@@ -40,7 +41,8 @@
                       evil-surround
                       evil-leader
                       evil-visualstar
-                      evil-jumper))
+                      evil-jumper
+                      evil-nerd-commenter))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -153,6 +155,7 @@
 (smartparens-global-strict-mode +1)
 (setq sp-autoescape-string-quote nil)
 (sp-pair "'" nil :actions :rem)
+(sp-pair "`" nil :actions :rem)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -316,7 +319,7 @@
 (setq evil-shift-width 2)
 
 ;; Indent on new line in insert mode
-(define-key evil-insert-state-map (kbd "RET") 'evil-ret-and-indent)
+;; (define-key evil-insert-state-map (kbd "RET") 'evil-ret-and-indent)
 
 ;; Redefine key to enter the command line
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
@@ -368,6 +371,9 @@
 ;; Enable evil-jumper
 (require 'evil-jumper)
 
+;; Enable nerd-commenter
+(evilnc-default-hotkeys)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Win-switch configuration
@@ -413,6 +419,13 @@
 ;; Smart-mode-line configuration
 (require 'smart-mode-line)
 (sml/setup)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Jedi configuration
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+(jedi:install-server)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
