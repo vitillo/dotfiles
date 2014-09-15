@@ -168,8 +168,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keybinding management
 
-(define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
-(define-key sp-keymap (kbd "C-M-b") 'sp-backward-sexp)
+(define-key sp-keymap (kbd "C-M-f") 'sp-next-sexp)
+(define-key sp-keymap (kbd "C-M-b") 'sp-previous-sexp)
 
 (define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
 (define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
