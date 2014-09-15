@@ -152,10 +152,62 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Smartparens configuration
-(smartparens-global-strict-mode +1)
-(setq sp-autoescape-string-quote nil)
+
+;;;;;;;;;
+;; global
+(require 'smartparens-config)
 (sp-pair "'" nil :actions :rem)
 (sp-pair "`" nil :actions :rem)
+
+;; don't autoescape strings
+(setq sp-autoescape-string-quote nil)
+
+;; highlights matching pairs
+(show-smartparens-global-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; keybinding management
+
+(define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
+(define-key sp-keymap (kbd "C-M-b") 'sp-backward-sexp)
+
+(define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
+(define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
+
+(define-key sp-keymap (kbd "C-M-p") 'sp-backward-up-sexp)
+(define-key sp-keymap (kbd "C-M-n") 'sp-down-sexp)
+
+(define-key sp-keymap (kbd "C-M-k") 'sp-kill-sexp)
+(define-key sp-keymap (kbd "C-M-w") 'sp-copy-sexp)
+
+(define-key sp-keymap (kbd "C-<right>") 'sp-forward-slurp-sexp)
+(define-key sp-keymap (kbd "C-<left>") 'sp-forward-barf-sexp)
+(define-key sp-keymap (kbd "C-M-<left>") 'sp-backward-slurp-sexp)
+(define-key sp-keymap (kbd "C-M-<right>") 'sp-backward-barf-sexp)
+
+;;;;;;;;;;;;;;;;;;
+;; pair management
+
+(sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
+
+;;; markdown-mode
+(sp-with-modes '(markdown-mode gfm-mode rst-mode)
+  (sp-local-pair "*" "*" :bind "C-*")
+  (sp-local-tag "2" "**" "**")
+  (sp-local-tag "s" "```scheme" "```")
+  (sp-local-tag "<"  "<_>" "</_>" :transform 'sp-match-sgml-tags))
+
+;;; tex-mode latex-mode
+(sp-with-modes '(tex-mode plain-tex-mode latex-mode)
+  (sp-local-tag "i" "\"<" "\">"))
+
+;;; html-mode
+(sp-with-modes '(html-mode sgml-mode)
+  (sp-local-pair "<" ">"))
+
+;;; lisp modes
+(sp-with-modes sp--lisp-modes
+  (sp-local-pair "(" nil :bind "C-("))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -227,14 +279,6 @@
 (require 'window-number)
 (window-number-mode 1)
 (window-number-meta-mode 1)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Smartparens configuration
-(define-key sp-keymap (kbd "C-M-f") 'sp-next-sexp)
-(define-key sp-keymap (kbd "C-M-b") 'sp-backward-sexp)
-(define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
-(define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -496,23 +540,25 @@
 (require 'js)
 (setq js-indent-level 2)
 
-;; Emacs Lisp
-(add-hook 'emacs-lisp-mode-hook (lambda ()
-                                  (dolist (c (string-to-list ":_-?!#*/>"))
-                                    (modify-syntax-entry c "w"))))
-
 ;; Clojure
 (add-hook 'clojure-mode-hook (lambda ()
                                (dolist (c (string-to-list ":_-?!#*/>"))
                                  (modify-syntax-entry c "w"))))
+(add-hook 'clojure-mode-hook 'smartparens-strict-mode)
+(add-hook 'cider-repl-mode-hook 'smartparens-strict-mode)
 
 ;; Emacs Lisp
-(define-key emacs-lisp-mode-map (kbd "C-c C-c") 'eval-defun)
-(define-key emacs-lisp-mode-map (kbd "C-c C-b") 'eval-buffer)
-
+(add-hook 'emacs-lisp-mode-hook 'smartparens-strict-mode)
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (dolist (c (string-to-list ":_-?!#*/>"))
+                                    (modify-syntax-entry c "w"))))
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (turn-on-eldoc-mode)
 				  (setq mode-name "EL")))
+
+(define-key emacs-lisp-mode-map (kbd "C-c C-c") 'eval-defun)
+(define-key emacs-lisp-mode-map (kbd "C-c C-b") 'eval-buffer)
+
 
 (add-hook 'ielm-mode-hook (lambda ()
                             (run-hooks 'prelude-interactive-lisp-coding-hook)
