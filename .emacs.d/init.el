@@ -124,6 +124,11 @@
 (setq whitespace-style '(face tabs empty trailing lines-tail))
 (global-whitespace-mode +1)
 
+;; Mouse support
+(require 'mouse)
+(xterm-mouse-mode t)
+(defun track-mouse (e)) 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Switch command and alt key on OSX
