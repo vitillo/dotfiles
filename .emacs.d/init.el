@@ -22,7 +22,6 @@
                       magit
                       smartparens
                       helm
-                      neotree
                       json-mode
                       gist
                       markdown-mode
@@ -96,22 +95,24 @@
 ;; make the fringe thinner (default is 8 in pixels)
 (fringe-mode 4)
 
-;; show parenthesis match
-(show-paren-mode 1)
-(setq show-paren-style 'expression)
-
-;; Toggle line highlighting in all buffers
-(global-hl-line-mode t)
-
 ;; Start maximized
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("f0a99f53cbf7b004ba0c1760aa14fd70f2eabafe4e62a2b3cf5cabae8203113b" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "3b819bba57a676edf6e4881bd38c777f96d1aa3b3b5bc21d8266fa5b0d0f1ebf" default)))
+ '(custom-safe-themes
+   (quote
+    ("6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" default)))
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(magit-use-overlays nil))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 (setq default-directory (concat (getenv "HOME") "/"))
 
@@ -121,38 +122,32 @@
 ;; Enable whitespace-mode
 (require 'whitespace)
 (setq whitespace-line-column 80) ;; limit line length
-(setq whitespace-style '(face tabs empty trailing lines-tail))
+(setq whitespace-style '(face trailing lines-tail))
 (global-whitespace-mode +1)
 
 ;; Mouse support
 (require 'mouse)
 (xterm-mouse-mode t)
-(defun track-mouse (e)) 
+(defun track-mouse (e))
 
+;; Use solarized or zenburn theme
+(if (display-graphic-p)
+  (progn
+    (load-theme 'solarized-dark t)
+    ;; Toggle line highlighting in all buffers
+    (global-hl-line-mode t)
+
+    ;; show parenthesis match
+    (show-paren-mode 1)
+    (setq show-paren-style 'expression))
+  (load-theme 'zenburn t))
+
+(setq x-underline-at-descent-line t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Switch command and alt key on OSX
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Use solaraized color theme
-(if (display-graphic-p)
-  (progn
-    (load-theme 'solarized-dark t)
-    (setq solarized-distinct-fringe-background t)
-    ;; make the modeline high contrast)
-    (setq solarized-high-contrast-mode-line t)
-    ;; Use less bolding
-    (setq solarized-use-less-bold t)
-    ;; Use more italics
-    (setq solarized-use-more-italic t)
-    ;; Use less colors for indicators such as git:gutter, flycheck and similar.
-    (setq solarized-emphasize-indicators nil))
-  (load-theme 'zenburn t))
-
-(setq x-underline-at-descent-line t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -221,27 +216,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Neotree configuration
-(require 'neotree)
-
-;; Hack to make neotree play ball with popwin
-;; https://github.com/jaypei/emacs-neotree/issues/50#issuecomment-54249309
-(when neo-persist-show
-  (add-hook 'popwin:before-popup-hook
-            (lambda () (setq neo-persist-show nil)))
-  (add-hook 'popwin:after-popup-hook
-            (lambda () (setq neo-persist-show t))))
-
-;; Redefine keybinding for evil
-(add-hook 'neotree-mode-hook
-          (lambda ()
-            (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-            (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
-            (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Guide-key configuration
 (require 'guide-key)
 (setq guide-key/guide-key-sequence '("C-c" "C-x"))
@@ -277,7 +251,6 @@
 (add-hook 'term-mode-hook (lambda ()
 			    (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Window-number configuration
@@ -291,31 +264,10 @@
 
 ;; Change prefix key
 (setq elscreen-prefix-key (kbd "C-c t"))
-
 (elscreen-start)
 
 ;; Disable tabs display
 (setq elscreen-display-tab nil)
-
-;; Put tabs display in your frame title bar instead.
-(defun elscreen-frame-title-update ()
-  (when (elscreen-screen-modified-p 'elscreen-frame-title-update)
-    (let* ((screen-list (sort (elscreen-get-screen-list) '<))
-           (title (concat "| " (mapconcat
-                                (lambda (screen)
-                                  (let* ((label (elscreen-status-label screen))
-                                         (label (if (string= label "+") label "")))
-                                   (format "%s%d%s |"
-                                          label
-                                          screen
-                                          label)))
-                                screen-list " "))))
-      (if (fboundp 'set-frame-name)
-          (set-frame-name title)
-        (setq frame-title-format title)))))
-
-(eval-after-load "elscreen"
-  '(add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -324,7 +276,6 @@
 
 ;; seems to be causing some issues and not loading correctly the files
 ;; (setq projectile-enable-caching t)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -361,8 +312,7 @@
 (evil-leader/set-leader ",")
 (evil-leader/set-key
   "q" 'delete-window
-  "u" 'undo-tree-visualize
-  "o" 'neotree-toggle)
+  "u" 'undo-tree-visualize)
 
 ;; Set indentation level
 (setq evil-shift-width 2)
@@ -410,8 +360,9 @@
 ;; Enable ace-jump mode with evil-mode
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
 
-;; Remap 0 to ^
+;; Switch 0 and ^
 (define-key evil-motion-state-map "0" #'evil-first-non-blank-of-visual-line)
+(define-key evil-motion-state-map "^" #'evil-beginning-of-line)
 
 ;; Enable evil-surround
 (require 'evil-surround)
@@ -480,6 +431,16 @@
 
 ;; Company mode configuration
 (global-company-mode 1)
+(setq company-idle-delay 0)
+
+;; cycle with tab
+(setq company-selection-wrap-around t)
+(eval-after-load 'company
+  '(progn
+     (define-key company-active-map (kbd "C-p") 'company-select-previous)
+     (define-key company-active-map (kbd "C-n") 'company-select-next)
+     (define-key company-active-map (kbd "TAB") 'company-select-next)
+     (define-key company-active-map [tab] 'company-select-next)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -547,23 +508,21 @@
 
 ;; Clojure
 (add-hook 'clojure-mode-hook (lambda ()
+                               (smartparens-mode)
                                (dolist (c (string-to-list ":_-?!#*/>"))
                                  (modify-syntax-entry c "w"))))
-(add-hook 'clojure-mode-hook 'smartparens-mode)
 (add-hook 'cider-repl-mode-hook 'smartparens-mode)
 
 ;; Emacs Lisp
-(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (smartparens-mode)
+                                  (turn-on-eldoc-mode)
+                                  (setq mode-name "EL")
                                   (dolist (c (string-to-list ":_-?!#*/>"))
                                     (modify-syntax-entry c "w"))))
-(add-hook 'emacs-lisp-mode-hook (lambda ()
-                                  (turn-on-eldoc-mode)
-				  (setq mode-name "EL")))
 
 (define-key emacs-lisp-mode-map (kbd "C-c C-c") 'eval-defun)
 (define-key emacs-lisp-mode-map (kbd "C-c C-b") 'eval-buffer)
-
 
 (add-hook 'ielm-mode-hook (lambda ()
                             (run-hooks 'prelude-interactive-lisp-coding-hook)
@@ -574,10 +533,3 @@
   (add-hook hook 'elisp-slime-nav-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
