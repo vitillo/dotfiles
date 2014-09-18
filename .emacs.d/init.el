@@ -101,11 +101,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" default)))
  '(initial-frame-alist (quote ((fullscreen . maximized))))
- '(magit-use-overlays nil))
+ '(magit-use-overlays nil)
+ '(persp-mode t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -143,6 +141,9 @@
   (load-theme 'zenburn t))
 
 (setq x-underline-at-descent-line t)
+
+;; Disable annoying warnings when loading theme
+(setq sml/no-confirm-load-theme t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Switch command and alt key on OSX
@@ -408,6 +409,7 @@
 ;; Smart-mode-line configuration
 (require 'smart-mode-line)
 (sml/setup)
+(sml/apply-theme 'dark)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
