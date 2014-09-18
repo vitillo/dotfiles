@@ -12,7 +12,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(cider
+(defvar my-packages '(perspective
+                      cider
                       jedi
                       company
                       elisp-slime-nav
