@@ -154,7 +154,6 @@
 
 ;; Smartparens configuration
 
-;;;;;;;;;
 ;; global
 (require 'smartparens-config)
 (sp-pair "'" nil :actions :rem)
@@ -166,7 +165,6 @@
 ;; highlights matching pairs
 (show-smartparens-global-mode t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keybinding management
 
 (define-key sp-keymap (kbd "C-M-f") 'sp-next-sexp)
@@ -186,27 +184,26 @@
 (define-key sp-keymap (kbd "C-M-<left>") 'sp-backward-slurp-sexp)
 (define-key sp-keymap (kbd "C-M-<right>") 'sp-backward-barf-sexp)
 
-;;;;;;;;;;;;;;;;;;
 ;; pair management
 
 (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
 
-;;; markdown-mode
+;; markdown-mode
 (sp-with-modes '(markdown-mode gfm-mode rst-mode)
   (sp-local-pair "*" "*" :bind "C-*")
   (sp-local-tag "2" "**" "**")
   (sp-local-tag "s" "```scheme" "```")
   (sp-local-tag "<"  "<_>" "</_>" :transform 'sp-match-sgml-tags))
 
-;;; tex-mode latex-mode
+;; tex-mode latex-mode
 (sp-with-modes '(tex-mode plain-tex-mode latex-mode)
   (sp-local-tag "i" "\"<" "\">"))
 
-;;; html-mode
+;; html-mode
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-;;; lisp modes
+;; lisp modes
 (sp-with-modes sp--lisp-modes
   (sp-local-pair "(" nil :bind "C-("))
 
@@ -251,13 +248,6 @@
 ;; Make sure yanking works:
 (add-hook 'term-mode-hook (lambda ()
 			    (define-key term-raw-map (kbd "C-y") 'term-paste)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Window-number configuration
-(require 'window-number)
-(window-number-mode 1)
-(window-number-meta-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -410,6 +400,7 @@
 (require 'smart-mode-line)
 (sml/setup)
 (sml/apply-theme 'dark)
+(setq rm-blacklist '(" my-keys" " Helm" " Guide" " WS" " Undo-Tree" " company"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -432,6 +423,13 @@
      (define-key company-active-map (kbd "C-n") 'company-select-next)
      (define-key company-active-map (kbd "TAB") 'company-select-next)
      (define-key company-active-map [tab] 'company-select-next)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Window-number configuration
+(require 'window-number)
+(window-number-mode )
+(window-number-meta-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
