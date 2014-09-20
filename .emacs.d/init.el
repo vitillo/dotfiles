@@ -22,7 +22,9 @@
                       ace-jump-mode
                       magit
                       smartparens
+                      projectile
                       helm
+                      helm-projectile
                       json-mode
                       gist
                       markdown-mode
@@ -35,7 +37,6 @@
                       multi-term
                       win-switch
                       smart-mode-line
-                      projectile
                       evil
                       evil-surround
                       evil-leader
