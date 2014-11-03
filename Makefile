@@ -19,7 +19,6 @@ install-hg:
 	-ln -s $(ROOT_DIR)/.hgrc ~/.hgrc
 
 install-awesome:
-	-ln -s $(ROOT_DIR)/.wallpaper.png ~/.wallpaper.png
 	-ln -s $(ROOT_DIR)/.conkyrc ~/.conkyrc
 
 	mkdir -p ~/.config/terminator
