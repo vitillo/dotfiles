@@ -13,8 +13,10 @@
   (package-refresh-contents))
 
 (defvar my-packages '(perspective
+                      scala-mode2
                       cider
                       jedi
+                      ess
                       company
                       elisp-slime-nav
                       exec-path-from-shell
@@ -470,6 +472,11 @@
 
 ;; Use soft tabs
 (setq-default indent-tabs-mode nil)
+
+;; R
+(require 'ess-site)
+(add-hook 'ess-mode-hook (lambda ()
+                           (company-mode -1)))
 
 ;; Python
 (add-hook 'python-mode-hook (lambda ()
