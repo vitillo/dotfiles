@@ -1,38 +1,38 @@
+ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 install: install-vim install-git install-hg install-awesome install-tmux install-zsh install-ssh install-emacs
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc
-	-ln -si $(PWD)/.vim ~/.vim
-	-ln -si $(PWD)/.vimrc ~/.vimrc
+	-ln -s $(ROOT_DIR)/.vim ~/.vim
+	-ln -s $(ROOT_DIR)/.vimrc ~/.vimrc
 
 install-zsh:
-	wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-	-ln -si $(PWD)/.zshrc ~/.zshrc
+	wget --no-check-certificate http://install.ohmyz.sh -O - | sh
+	-ln -s $(ROOT_DIR)/.zshrc ~/.zshrc
 
 install-git:
-	-ln -si $(PWD)/.gitconfig ~/.gitconfig
-	-ln -si $(PWD)/.gitignore ~/.gitignore
+	-ln -s $(ROOT_DIR)/.gitconfig ~/.gitconfig
+	-ln -s $(ROOT_DIR)/.gitignore ~/.gitignore
 
 install-hg:
-	-ln -si $(PWD)/.hgrc ~/.hgrc
+	-ln -s $(ROOT_DIR)/.hgrc ~/.hgrc
 
 install-awesome:
-	-ln -si $(PWD)/.wallpaper.png ~/.wallpaper.png
-	-ln -si $(PWD)/.conkyrc ~/.conkyrc
+	-ln -s $(ROOT_DIR)/.conkyrc ~/.conkyrc
 
 	mkdir -p ~/.config/terminator
-	-ln -si $(PWD)/.config/terminator/config ~/.config/terminator/config
-	-ln -si $(PWD)/.config/awesome ~/.config/awesome
+	-ln -s $(ROOT_DIR)/.config/terminator/config ~/.config/terminator/config
+	-ln -s $(ROOT_DIR)/.config/awesome ~/.config/awesome
 
 install-tmux:
-	-ln -si $(PWD)/.tmux.conf ~/.tmux.conf
+	-ln -s $(ROOT_DIR)/.tmux.conf ~/.tmux.conf
 
 install-ssh:
 	mkdir -p ~/.ssh
-	-ln -si $(PWD)/ssh_config ~/.ssh/config
+	-ln -s $(ROOT_DIR)/ssh_config ~/.ssh/config
 
 install-emacs:
 	mkdir -p ~/.emacs.d
 	mkdir -p ~/.lein
-	-ln -si $(PWD)/.emacs.d/init.el ~/.emacs.d/init.el
-	-ln -si $(PWD)/.lein/profiles.clj ~/.lein/profiles.clj
+	-ln -s $(ROOT_DIR)/.emacs.d/init.el ~/.emacs.d/init.el
+	-ln -s $(ROOT_DIR)/.lein/profiles.clj ~/.lein/profiles.clj
