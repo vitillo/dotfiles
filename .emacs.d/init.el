@@ -14,6 +14,7 @@
 
 (defvar my-packages '(perspective
                       scala-mode2
+                      ensime
                       cider
                       jedi
                       ess
@@ -131,17 +132,8 @@
 (xterm-mouse-mode t)
 (defun track-mouse (e))
 
-;; Use solarized or zenburn theme
-(if (display-graphic-p)
-  (progn
-    (load-theme 'solarized-dark t)
-    ;; Toggle line highlighting in all buffers
-    (global-hl-line-mode t)
-
-    ;; show parenthesis match
-    (show-paren-mode 1)
-    (setq show-paren-style 'expression))
-  (load-theme 'zenburn t))
+;; Use zenburn theme
+(load-theme 'zenburn t)
 
 (setq x-underline-at-descent-line t)
 
