@@ -386,6 +386,8 @@
         ("*cider-result*" :height 20)
         ("*cider-macroexpansion*" :height 20)
         ("\\*cider-repl.*" :regexp t :height 20 :stick t)
+        ("\\*sbt.*" :regexp t :height 20 :stick t)
+        ("\\*ensime.*" :regexp t :height 20 :stick t)
         ("*Kill Ring*" :height 20)
         ("*Compile-Log*" :height 20 :stick t)))
 
@@ -506,6 +508,13 @@
 (add-hook 'ielm-mode-hook (lambda ()
                             (run-hooks 'prelude-interactive-lisp-coding-hook)
 			    (turn-on-eldoc-mode)))
+
+;; Scala
+(require 'ensime)
+(add-hook 'scala-mode-hook (lambda ()
+                             (ensime-scala-mode-hook)
+                             (setq ensime-sbt-compile-on-save nil)))
+
 
 ;; enable elisp-slime-nav-mode
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
