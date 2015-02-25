@@ -489,8 +489,12 @@
 				(modify-syntax-entry ?_ "w")))
 
 ;;Javascript
-(require 'js)
 (setq js-indent-level 2)
+(add-hook 'js2-mode-hook (lambda ()
+                           (dolist (c (string-to-list "_"))
+                             (modify-syntax-entry c "w"))))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsm\\'" . js2-mode))
 
 ;; Clojure
 (add-hook 'clojure-mode-hook (lambda ()
