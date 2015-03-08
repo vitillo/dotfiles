@@ -415,7 +415,7 @@
 (global-company-mode 1)
 (setq company-idle-delay 0)
 (setq company-dabbrev-downcase nil)
-(setq company-backends '(company-dabbrev company-css company-cmake company-files completion-at-point-functions))
+;;(setq company-backends '(completion-at-point-functions company-dabbrev company-css company-cmake company-files))
 
 ;; cycle with tab
 (setq company-selection-wrap-around t)
