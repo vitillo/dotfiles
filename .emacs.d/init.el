@@ -13,6 +13,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(perspective
+                      ein-mumamo
                       scala-mode2
                       ensime
                       cider
