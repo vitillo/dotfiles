@@ -14,6 +14,7 @@
 
 (defvar my-packages '(perspective
                       ein-mumamo
+                      lua-mode
                       scala-mode2
                       ensime
                       cider
