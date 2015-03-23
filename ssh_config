@@ -5,3 +5,8 @@ ForwardX11Trusted yes
 Host hg.mozilla.org
 	User rvitillo@mozilla.com
 	IdentityFile ~/Dropbox/Keys/mozilla_vitillo
+
+Host github.com-vitillo
+    HostName github.com
+    User git
+    IdentityFile ~/Dropbox/Keys/mozilla_vitillo
