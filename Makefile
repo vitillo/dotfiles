@@ -5,6 +5,7 @@ install-vim:
 	rm -rf ~/.vim ~/.vimrc
 	-ln -s $(ROOT_DIR)/.vim ~/.vim
 	-ln -s $(ROOT_DIR)/.vimrc ~/.vimrc
+	vim -c ":BundleInstall" -c ":q" -c ":q"
 
 install-zsh:
 	- wget --no-check-certificate http://install.ohmyz.sh -O - | sh
