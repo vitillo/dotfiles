@@ -7,7 +7,7 @@ install-vim:
 	-ln -s $(ROOT_DIR)/.vimrc ~/.vimrc
 
 install-zsh:
-	wget --no-check-certificate http://install.ohmyz.sh -O - | sh
+	- wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 	-ln -s $(ROOT_DIR)/.zshrc ~/.zshrc
 
 install-git:
