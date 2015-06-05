@@ -34,5 +34,7 @@ install-ssh:
 install-emacs:
 	mkdir -p ~/.emacs.d
 	mkdir -p ~/.lein
-	-ln -s $(ROOT_DIR)/.emacs.d/init.el ~/.emacs.d/init.el
+	git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d
+	-ln -s $(ROOT_DIR)/.spacemacs ~/.spacemacs
 	-ln -s $(ROOT_DIR)/.lein/profiles.clj ~/.lein/profiles.clj
+	emacs --batch -l ~/.emacs.d/init.el
