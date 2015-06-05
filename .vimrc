@@ -264,8 +264,8 @@ let g:rbpt_colorpairs = [
     \ ['red',         'firebrick3'],
     \ ]
 
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
+au VimEnter * silent! RainbowParenthesesToggle
+au Syntax * silent! RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
 
@@ -299,9 +299,9 @@ if has('gui_running')
 	let g:solarized_termtrans = 1
 	let g:solarized_termcolors = 16
 	let g:solarized_contrast = "high"
-	colorscheme solarized
+	silent! colorscheme solarized
 else
-	colors zenburn
+	silent! colors zenburn
 endif
 
 " tagbar configuration
