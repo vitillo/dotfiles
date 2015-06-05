@@ -14,15 +14,15 @@
    '(
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t)
+     eyebrowse
      (git :variables
           git-gutter-use-fringe t)
      markdown
+     (shell :variables
+            shell-default-shell 'multi-term)
      syntax-checking
      python
      osx
-     perspectives
-     (shell :variables
-            shell-default-shell 'multi-term)
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
