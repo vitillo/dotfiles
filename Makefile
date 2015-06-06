@@ -27,6 +27,7 @@ install-awesome:
 
 install-tmux:
 	-ln -s $(ROOT_DIR)/.tmux.conf ~/.tmux.conf
+	-ln -s $(ROOT_DIR)/.ssh/rc ~/.ssh/
 
 install-ssh:
 	mkdir -p ~/.ssh
