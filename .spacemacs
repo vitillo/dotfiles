@@ -14,15 +14,23 @@
    '(
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t)
+     c-c++
+     clojure
+     emacs-lisp
      eyebrowse
      (git :variables
           git-gutter-use-fringe t)
+     html
+     javascript
+     lua
      markdown
      (shell :variables
             shell-default-shell 'multi-term)
      syntax-checking
-     python
      osx
+     python
+     restclient
+     sql
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
