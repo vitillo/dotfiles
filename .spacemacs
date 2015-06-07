@@ -176,11 +176,14 @@ layers configuration."
   (define-key evil-motion-state-map "0" #'evil-first-non-blank-of-visual-line)
   (define-key evil-motion-state-map "^" #'evil-beginning-of-line)
 
-  ;; Powerline configuration
+  ;; powerline configuration
   (setq powerline-default-separator 'bar)
 
-  ;; Undotree configuration
+  ;; undo-tree configuration
   (setq undo-tree-auto-save-history t)
+
+  ;; lua-mode configuration
+  (setq lua-default-application "luajit")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
