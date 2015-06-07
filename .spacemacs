@@ -147,7 +147,11 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (global-hl-line-mode -1) ; Disable current line highlight
+  ;; Disable current line highlight
+  (global-hl-line-mode -1) 
+
+  ;; Disable vc backend, slow as hell when loading and saving files
+  (setq vc-handled-backends ())
 
   ;; Evil configuration
   ;; C-g as general purpose escape key sequence for evil.
@@ -174,6 +178,9 @@ layers configuration."
 
   ;; Powerline configuration
   (setq powerline-default-separator 'bar)
+
+  ;; Undotree configuration
+  (setq undo-tree-auto-save-history t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
