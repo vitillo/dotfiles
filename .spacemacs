@@ -147,14 +147,14 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  ;; Disable current line highlight
+  ;; disable current line highlight
   (global-hl-line-mode -1) 
 
-  ;; Disable vc backend, slow as hell when loading and saving files
+  ;; disable vc backend, slow as hell when loading and saving files
   (setq vc-handled-backends ())
 
-  ;; Evil configuration
-  ;; C-g as general purpose escape key sequence for evil.
+  ;; evil configuration
+  ;; C-g as general purpose escape key sequence for evil
   (defun my-esc (prompt)
     "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
     (cond
@@ -175,6 +175,13 @@ layers configuration."
   ;; Switch 0 and ^
   (define-key evil-motion-state-map "0" #'evil-first-non-blank-of-visual-line)
   (define-key evil-motion-state-map "^" #'evil-beginning-of-line)
+
+  ;; Restore some handy emacs keybindings
+  (define-key evil-insert-state-map (kbd "C-a") 'evil-first-non-blank-of-visual-line)
+  (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
+  (define-key evil-insert-state-map (kbd "C-n") 'evil-next-line)
+  (define-key evil-insert-state-map (kbd "C-p") 'evil-previous-line)
+  (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
 
   ;; powerline configuration
   (setq powerline-default-separator 'bar)
