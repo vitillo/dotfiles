@@ -190,7 +190,7 @@ layers configuration."
   (setq undo-tree-auto-save-history t)
 
   ;; lua-mode configuration
-  (setq lua-default-application "luajit")
+  (setq lua-default-application "th")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
