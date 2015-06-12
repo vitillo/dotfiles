@@ -153,6 +153,10 @@ layers configuration."
   ;; disable vc backend, slow as hell when loading and saving files
   (setq vc-handled-backends ())
 
+  ;; Switch command and alt key on OSX
+  (setq mac-option-modifier 'super)
+  (setq mac-command-modifier 'meta)
+
   ;; evil configuration
   ;; C-g as general purpose escape key sequence for evil
   (defun my-esc (prompt)
