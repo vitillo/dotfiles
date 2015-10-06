@@ -197,6 +197,10 @@ layers configuration."
 
   ;; lua-mode configuration
   (setq lua-default-application "luajit")
+
+  ;; js2-mode configuration
+  (setq-default js2-basic-offset 2
+                js-indent-level 2)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
