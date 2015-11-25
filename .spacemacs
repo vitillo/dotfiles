@@ -16,6 +16,7 @@
                       auto-completion-enable-help-tooltip t)
      c-c++
      clojure
+     scala
      emacs-lisp
      eyebrowse
      (git :variables
@@ -206,6 +207,8 @@ layers configuration."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
+  '(ensime-inf-default-cmd-line (quote ("sbt" "console")))
+
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
