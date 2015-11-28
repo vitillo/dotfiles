@@ -17,6 +17,7 @@
      c-c++
      clojure
      scala
+     haskell
      emacs-lisp
      eyebrowse
      (git :variables
@@ -202,6 +203,17 @@ layers configuration."
   ;; js2-mode configuration
   (setq-default js2-basic-offset 2
                 js-indent-level 2)
+
+
+  ;; haskell-mode configuration
+  (setq-default dotspacemacs-configuration-layers
+   '((haskell :variables haskell-enable-ghc-mod-support t)))
+
+  (setq-default dotspacemacs-configuration-layers
+   '((haskell :variables haskell-enable-ghci-ng-support t)))
+
+  (setq-default dotspacemacs-configuration-layers
+   '((haskell :variables haskell-enable-shm-support t)))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
