@@ -8,8 +8,8 @@ install-vim:
 	vim -c ":BundleInstall" -c ":q" -c ":q"
 
 install-zsh:
-	-wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 	-ln -s $(ROOT_DIR)/.zshrc ~/.zshrc
+	-wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 
 install-git:
 	-ln -s $(ROOT_DIR)/.gitconfig ~/.gitconfig
