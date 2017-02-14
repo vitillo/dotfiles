@@ -6,7 +6,7 @@ filetype indent on
 
 set hidden
 set title
-set mouse=a
+set mouse-=a
 set mousehide
 set virtualedit=onemore
 set history=1000
@@ -230,6 +230,7 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'jnurmine/Zenburn'
+Bundle 'vim-scripts/gruvbox'
 
 " Neocomplcache configuration
 let g:neocomplcache_enable_at_startup = 1
@@ -301,7 +302,8 @@ if has('gui_running')
 	let g:solarized_contrast = "high"
 	silent! colorscheme solarized
 else
-	silent! colors zenburn
+	set bg=dark
+	silent! colors gruvbox
 endif
 
 " tagbar configuration

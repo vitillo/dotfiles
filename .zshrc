@@ -76,6 +76,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias emacs="emacs -nw"
+
 export TERM=xterm-256color
 export EDITOR="vim"
+
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

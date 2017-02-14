@@ -19,7 +19,7 @@ install-hg:
 	-ln -s $(ROOT_DIR)/.hgrc ~/.hgrc
 
 install-awesome:
-	-ln -s $(ROOT_DIR)/.conkyrc ~/.conkyrc
+	-ln -s $(ROOT_DIR)/.xinitrc ~/.xinitrc
 
 	mkdir -p ~/.config/terminator
 	-ln -s $(ROOT_DIR)/.config/terminator/config ~/.config/terminator/config
